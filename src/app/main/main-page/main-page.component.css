@@ -1,0 +1,22 @@
+section.main-wrap {
+    height: 100vh;
+    width: 100wh;
+    background-image: url('../../../assets/main_picture.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+section.main-content {
+    z-index: 100;
+    background-color: black;
+}
+
+
+
+section.main::after {
+   
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+}

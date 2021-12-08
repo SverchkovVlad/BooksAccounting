@@ -3,7 +3,12 @@
     src: url('../../../fonts/alatsi_regular.ttf');
 }
 
-section.main-wrap {
+@font-face {
+    font-family: Amperzand;
+    src: url('../../../fonts/Amperzand.ttf');
+}
+
+section.intro-wrap {
     height: 100vh;
     width: 100wh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.5)) , url('../../../assets/main_picture.jpg');
@@ -16,7 +21,11 @@ section.main-wrap {
     margin: 0 auto;
     width: 80%;
     height: 100%;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
+    
+}
+
+.intro-text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,15 +36,35 @@ h1, .quote {
     margin: 0;
     padding: 0;
     color: white;
-    font-family: AlatsiRegular;
+    
 }
 
 h1 {
-    font-size: 200px;
+    font-size: 180px;
+}
+
+h1, h3 {
+    font-family: AlatsiRegular, Arial, Helvetica, sans-serif;
 }
 
 .quote {
-    font-size: 50px;
+    font-size: 45px;
+    font-family: Amperzand, Arial, Helvetica, sans-serif;
+}
+
+.books-container {
+    color: white;
+    background-color: #ab9393;
+    /*height: auto;*/
+    height: 600px;
+}
+
+.books-container h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 40px;
 }
 
 

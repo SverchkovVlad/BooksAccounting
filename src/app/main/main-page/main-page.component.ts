@@ -9,16 +9,15 @@ import { DbOperationsService } from 'src/app/services/db-operations.service';
 })
 export class MainPageComponent implements OnInit {
 
-  //bookItem : HTMLElement | undefined;
-  //authors? : [string, string, string, Date, string[], string[]];
-  authors : any = [];
-
+  authors : Author[];
+  
   constructor(private dbOperationsService : DbOperationsService) { }
 
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       console.log(item);
-      this.authors = <Author>item;
+      this.authors = <Author[]>item;
+      console.log(typeof this.authors); 
     })
   }
 

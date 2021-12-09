@@ -11,4 +11,8 @@ export class DbOperationsService {
   getAuthors() {
     return this.http.get('http://localhost:3000/authors');
   }
+
+  deleteAuthor(id: number) {
+    return this.http.delete(`http://localhost:3000/authors/${id}`);
+  }
 }

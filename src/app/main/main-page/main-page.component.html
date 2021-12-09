@@ -11,16 +11,20 @@
     <div class = "center">
         <h3>List of our books</h3>
 
-        <div class="book-item" *ngFor = "let author of authors">
-            <li>Name: {{author.name}}</li>
-            <li>Surname: {{author.surname}}</li>
-            <li>Patronymic: {{author.patronymic}}</li>
-            <li>Date of birth: {{author.birthDate}} </li>
-            <li>
+        <!-- Make this using table and FlexBox or Grid for responsive design -->
+        <!-- https://www.w3schools.com/css/css_table.asp -->
+        <div class="book-item" *ngFor = "let author of authors; let i = index">
+            
+            <p>Name: {{author.name}}</p>
+            <p>Surname: {{author.surname}}</p>
+            <p>Patronymic: {{author.patronymic}}</p>
+            <p>Date of birth: {{author.birthDate}} </p>
+            <p>
                 List of books: 
-                <p *ngFor = "let book of author.booksList">{{book}}</p>
-                
-            </li>
+                <li *ngFor = "let book of author.booksList">{{book}}</li>
+            </p>
+            <p>ID of author: {{i}}</p>
+            <button (click) = "deleteAuthor(i)">Delete</button>
         </div>
 
     </div>

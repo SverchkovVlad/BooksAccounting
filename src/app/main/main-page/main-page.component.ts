@@ -10,14 +10,19 @@ import { DbOperationsService } from 'src/app/services/db-operations.service';
 export class MainPageComponent implements OnInit {
 
   authors : Author[];
-  
+
   constructor(private dbOperationsService : DbOperationsService) { }
 
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
-      console.log(item);
       this.authors = <Author[]>item;
-      console.log(typeof this.authors); 
+    })
+  }
+
+  deleteAuthor(id: number) {
+    this.dbOperationsService.deleteAuthor(id).subscribe(item => {
+      this.getAuthors();
+      console.log("Element has been deleted!");
     })
   }
 

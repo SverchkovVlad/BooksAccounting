@@ -67,4 +67,8 @@ h1, h3 {
     font-size: 40px;
 }
 
+.book-item {
+    border: 1px solid red;
+}
+
 

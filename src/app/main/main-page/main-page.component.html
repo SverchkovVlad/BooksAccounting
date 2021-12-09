@@ -11,15 +11,17 @@
     <div class = "center">
         <h3>List of our books</h3>
 
-        <!-- <div class="book-item" *ngFor = "let author of authors">
+        <div class="book-item" *ngFor = "let author of authors">
             <li>Name: {{author.name}}</li>
             <li>Surname: {{author.surname}}</li>
             <li>Patronymic: {{author.patronymic}}</li>
             <li>Date of birth: {{author.birthDate}} </li>
-            <li *ngFor = "let book of author.books">List of books:
-                <li> {{book}} </li>
+            <li>
+                List of books: 
+                <p *ngFor = "let book of author.booksList">{{book}}</p>
+                
             </li>
-        </div> -->
+        </div>
 
     </div>
 </section>

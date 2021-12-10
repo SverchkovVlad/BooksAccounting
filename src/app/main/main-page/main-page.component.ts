@@ -16,6 +16,7 @@ export class MainPageComponent implements OnInit {
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
+      console.log(this.authors);
     })
   }
 

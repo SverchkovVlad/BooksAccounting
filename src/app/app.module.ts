@@ -10,8 +10,7 @@ import { AddAuthorComponent } from './add-author/add-author.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
-    AddAuthorComponent
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

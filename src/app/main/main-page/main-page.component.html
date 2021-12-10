@@ -13,6 +13,34 @@
 
         <!-- Make this using table and FlexBox or Grid for responsive design -->
         <!-- https://www.w3schools.com/css/css_table.asp -->
+
+        <table class = "authors-table">
+            <tr>
+                <th>Author`s name</th>
+                <th>Author`s surname</th>
+                <th>Author`s patronymic</th>
+                <th>Date of birth</th>
+                <th>Books</th>
+                <th>Options</th>
+            </tr>
+            <tr *ngFor = "let author of authors">
+                <td> {{author.name}}</td>
+                <td> {{author.surname}}</td>
+                <td> {{author.patronymic}}</td>
+                <td> {{author.birthDate}}</td>
+                <td> 
+                    <ul>
+                        <li *ngFor = "let book of author.booksList">{{book}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <button>Edit</button>
+                    <button (click) = "deleteAuthor(author.id)">Delete</button>
+                </td>
+
+            </tr>
+        </table>
+
         <div class="book-item" *ngFor = "let author of authors; let i = index">
             
             <p>Name: {{author.name}}</p>
@@ -24,11 +52,14 @@
                 <li *ngFor = "let book of author.booksList">{{book}}</li>
             </p>
             <p>ID of author: {{i}}</p>
+
+            <button>Edit</button>
             <button (click) = "deleteAuthor(author.id)">Delete</button>
+            
         </div>
 
         <a routerLink = "addAuthor" routerLinkActive = "active">Add new author</a>
-        <a>Edit genres</a>
+        <a routerLink = "editGenres" routerLinkActive = "active">Edit genres</a>
 
     </div>
 </section>

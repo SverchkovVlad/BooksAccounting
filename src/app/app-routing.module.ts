@@ -4,8 +4,10 @@ import { MainPageComponent } from './main/main-page/main-page.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
-  {path: 'addAuthor', loadChildren: () => import('../app/add-author/add-author-routing.module')
-      .then(mod => mod.AddAuthorRoutingModule)}
+  {path: 'addAuthor', loadChildren: () => import('./add-author/routing-modules/add-author-routing.module')
+      .then(mod => mod.AddAuthorRoutingModule)},
+  {path: 'editGenres', loadChildren: () => import('./genres/routing-modules/edit-genres-routing.module')
+      .then(mod => mod.EditGenresRoutingModule)}
 ];
 
 @NgModule({

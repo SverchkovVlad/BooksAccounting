@@ -54,7 +54,8 @@ h1, h3 {
 
 .books-container {
     color: white;
-    background-color: #ab9393;
+    /*background-color: #ab9393;*/
+    background-color: hsl(355, 19%, 38%);
     /*height: auto;*/
     height: auto;
 }
@@ -69,6 +70,45 @@ h1, h3 {
 
 .book-item {
     border: 1px solid red;
+}
+
+.authors-table {
+    margin-top: 30px;
+    width: 100%;
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+.authors-table td, .authors-table th {
+    border: 1px solid white;
+}
+
+.authors-table th {
+    padding: 20px;
+    background-color: #645968;
+}
+
+.authors-table td {
+    text-align: center;
+}
+
+.authors-table tr:nth-child(even) {
+    
+}
+
+.authors-table li {
+    list-style-type: none;
+}
+
+.authors-table ul {
+    padding-left: 0;
+}
+
+.authors-table button {
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 

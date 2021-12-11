@@ -64,8 +64,17 @@ h1, h3 {
     font-size: 40px;
 }
 
-.book-item {
-    border: 1px solid red;
+.list-sorting {
+    margin: 30px auto;
+}
+
+.list-sorting select {
+    background-color: #0563af;
+    color: white;
+    padding: 12px;
+    border: 2px solid #08508b;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .authors-table {
@@ -79,7 +88,10 @@ h1, h3 {
     border: 1px solid black;
 }
 
-.authors-table th, .authors-table button, .a-buttons a {
+.authors-table th, 
+.authors-table button, 
+.a-buttons a,
+.list-sorting {
     font-family: "Open Sans", sans-serif;
 }
 

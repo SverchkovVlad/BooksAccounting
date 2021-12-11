@@ -41,23 +41,6 @@
             </tr>
         </table>
 
-        <div class="book-item" *ngFor = "let author of authors; let i = index">
-            
-            <p>Name: {{author.name}}</p>
-            <p>Surname: {{author.surname}}</p>
-            <p>Patronymic: {{author.patronymic}}</p>
-            <p>Date of birth: {{author.birthDate}} </p>
-            <p>
-                List of books: 
-                <li *ngFor = "let book of author.booksList">{{book}}</li>
-            </p>
-            <p>ID of author: {{i}}</p>
-
-            <button>Edit</button>
-            <button (click) = "deleteAuthor(author.id)">Delete</button>
-            
-        </div>
-
         <a routerLink = "addAuthor" routerLinkActive = "active">Add new author</a>
         <a routerLink = "editGenres" routerLinkActive = "active">Edit genres</a>
 

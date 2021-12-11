@@ -23,7 +23,7 @@
                 <th>Books</th>
                 <th>Options</th>
             </tr>
-            <tr *ngFor = "let author of authors">
+            <tr class = "author-data" *ngFor = "let author of authors">
                 <td> {{author.name}}</td>
                 <td> {{author.surname}}</td>
                 <td> {{author.patronymic}}</td>
@@ -41,8 +41,12 @@
             </tr>
         </table>
 
-        <a routerLink = "addAuthor" routerLinkActive = "active">Add new author</a>
-        <a routerLink = "editGenres" routerLinkActive = "active">Edit genres</a>
+        <div class="a-buttons">
+            <!-- <a routerLink = "addAuthor">Add new author</a>
+            <a routerLink = "editGenres">Edit genres</a> -->
+            <a>Add new author</a>
+            <a>Edit genres</a>
+        </div>
 
     </div>
 </section>

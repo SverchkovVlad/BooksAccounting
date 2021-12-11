@@ -40,7 +40,7 @@ h1, .quote {
 }
 
 h1 {
-    font-size: 180px;
+    font-size: 160px;
 }
 
 h1, h3 {
@@ -48,7 +48,7 @@ h1, h3 {
 }
 
 .quote {
-    font-size: 45px;
+    font-size: 35px;
     font-family: Amperzand, Arial, Helvetica, sans-serif;
 }
 
@@ -82,10 +82,13 @@ h1, h3 {
     border: 1px solid black;
 }
 
+.authors-table th, .authors-table button, .a-buttons a {
+    font-family: "Open Sans", sans-serif;
+}
+
 .authors-table th {
     padding: 20px;
     background-color: #c9a7a7;
-    font-family: "Open Sans", sans-serif;
 }
 
 .authors-table td {     
@@ -94,6 +97,14 @@ h1, h3 {
 
 .authors-table tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+.authors-table tr.author-data:hover {
+    /*outline: 2px dashed black;
+    outline-offset: -1px;*/
+    box-shadow: inset 3px 0 0 0 black, inset -5px 0 0 0;
+    background-color: rgb(255, 247, 226);
+    cursor: pointer;
 }
 
 .authors-table li {
@@ -105,7 +116,6 @@ h1, h3 {
 }
 
 .authors-table button {
-    font-family: "Open Sans", sans-serif;
     margin: 10px auto;
     display: block; 
     position: relative;
@@ -125,5 +135,67 @@ h1, h3 {
 .authors-table button:hover {
     cursor: pointer;
 }
+
+.a-buttons {
+    /*border: 3px solid green;*/
+    margin: 30px auto;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-buttons a {
+    font-weight: bold;
+    text-decoration: none;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #8b6969;
+    width: 25%;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    border: 1px solid;
+    border-radius: 8px;
+    position: relative;
+    /*support for IE (ms) and other browsers*/
+    transition: -ms-transform .1s, -webkit-transform .1s, transform .1s, background-position .5s; 
+    background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    background-size: 200% auto;
+}
+
+.a-buttons a:hover {
+    cursor: pointer;
+    
+    transform: scale(.96);
+    background-position: right center;
+}
+
+.a-buttons a:active {
+    background-color: #F7F7F7;
+    border-color: #000000;
+    transform: scale(.90);
+}
+
+.btn-grad {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
 
 

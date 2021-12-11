@@ -11,18 +11,18 @@
 section.intro-wrap {
     height: 100vh;
     width: 100wh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.5)) , url('../../../assets/main_picture.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.4)) , url('../../../assets/main_picture.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    outline: 10px solid white;
+    outline-offset: -120px;;
 }
 
 .center {
     margin: 0 auto;
     width: 80%;
     height: 100%;
-    /*border: 1px solid red;*/
-    
 }
 
 .intro-text {
@@ -36,7 +36,6 @@ h1, .quote {
     margin: 0;
     padding: 0;
     color: white;
-    
 }
 
 h1 {
@@ -54,8 +53,6 @@ h1, h3 {
 
 .books-container {
     color: black;
-    /*background-color: #ab9393;*/
-    /*height: auto;*/
     height: auto;
 }
 
@@ -88,7 +85,8 @@ h1, h3 {
 
 .authors-table th {
     padding: 20px;
-    background-color: #c9a7a7;
+    background-color: #0A66C2;
+    color: white;
 }
 
 .authors-table td {     
@@ -102,7 +100,7 @@ h1, h3 {
 .authors-table tr.author-data:hover {
     /*outline: 2px dashed black;
     outline-offset: -1px;*/
-    box-shadow: inset 3px 0 0 0 black, inset -5px 0 0 0;
+    box-shadow: inset 3px 0 0 0 #0A66C2, inset -5px 0 0 0 #0A66C2;
     background-color: rgb(255, 247, 226);
     cursor: pointer;
 }
@@ -155,13 +153,13 @@ h1, h3 {
     width: 25%;
     text-align: center;
     text-transform: uppercase;
-    color: black;
+    color: white;
     border: 1px solid;
     border-radius: 8px;
     position: relative;
     /*support for IE (ms) and other browsers*/
     transition: -ms-transform .1s, -webkit-transform .1s, transform .1s, background-position .5s; 
-    background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    background-image: linear-gradient(to right, #16437E 0%, #26a0da  51%, #0A66C2  100%);
     background-size: 200% auto;
 }
 
@@ -177,25 +175,3 @@ h1, h3 {
     border-color: #000000;
     transform: scale(.90);
 }
-
-.btn-grad {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
-.btn-grad {
-   margin: 10px;
-   padding: 15px 45px;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btn-grad:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
-
-

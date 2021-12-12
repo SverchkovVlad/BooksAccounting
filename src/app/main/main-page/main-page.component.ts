@@ -1,22 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Author } from 'src/app/interfaces/author';
 import { DbOperationsService } from 'src/app/services/db-operations.service';
+import { SortingService } from 'src/app/services/sorting.service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
 
   authors : Author[];
+  selectOption : HTMLCollectionOf<HTMLOptionElement>;
+  selectElement : HTMLSelectElement;
 
-  constructor(private dbOperationsService : DbOperationsService) { }
+  constructor(private dbOperationsService : DbOperationsService,
+              private sortingService : SortingService) { }
+
+  selectOptionHandler(selectedOptionEvent : Event) {
+    let e = <HTMLOptionElement>selectedOptionEvent.target;
+    console.log(e.value); 
+  }
 
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
-      console.log(this.authors);
+      //console.log(this.authors);
+      //console.log(this.authors[0]);
     })
   }
 
@@ -31,4 +41,8 @@ export class MainPageComponent implements OnInit {
     this.getAuthors();
   }
 
+  ngAfterViewInit(): void {
+    //for manipulations with @ViewChild and @ViewChildren after View initializing is completed
+    
+  }
 }

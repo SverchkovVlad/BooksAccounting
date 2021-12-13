@@ -16,6 +16,8 @@ export class SortingService {
 
       case 'name': {
         specificSortedData = this.selectSpecificData(authorsData, sortType);
+        /* test function with property */
+        this.selectSpecificDataFromObject(authorsData, sortType);
         this.sortAuthorsByName(specificSortedData);
         break;
       }
@@ -40,32 +42,40 @@ export class SortingService {
 
   selectSpecificData(authorsData : Author[], sortType: keyof Author) {
 
-    let arrayID_Value : Array<[number, string | number | Date]> = [];
-    //let arrayID_Value = [];
-    sortType = "name";
+    let array_ID_Value : Array<[number, string | number | Date | string[]]> = [];
+
+    //let array_ID_Value : [number, string | number | Date][] = []; ----equally
+
 
     for(let i = 0, len = authorsData.length; i < len; i++) {
-
-      arrayID_Value.push([ authorsData[i].id, authorsData[i][sortType] ]);
-      //arrayID_Value[i].push(authorsData[i].name);
-      //console.log(authorsData[i]);
-
-
-        // console.log(authorsData[i].sortType) ????? 
-        
+      array_ID_Value.push([ authorsData[i].id, authorsData[i][sortType] ]);
     }
 
-    for (let el of arrayID_Value) {
+    for (let el of array_ID_Value) {
       console.log(el);
     }
 
+    return array_ID_Value;
+
   }
 
-  // sortAuthorsByName(id: any[], name: any[]) {
+  selectSpecificDataFromObject(authorsData : Author[], sortType: keyof Author) {
 
-  // }
+    let newObjectList : any = [];
 
-  sortAuthorsByName(data : any) {
+    for (let i = 0, len = authorsData.length; i < len; i++) {
+      newObjectList.push( { id: authorsData[i].id, sortType : authorsData[i][sortType] } );
+    }
+    
+    console.log(newObjectList);
+
+    // for (let el of newObjectList) {
+    //   console.log(el.id + " " + el.sortType);
+    // }
+
+  }
+
+  sortAuthorsByName(data : [number, string | number | Date | string[]][]) {
 
   }
 

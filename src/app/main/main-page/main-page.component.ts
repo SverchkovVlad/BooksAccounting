@@ -14,12 +14,15 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   selectOption : HTMLCollectionOf<HTMLOptionElement>;
   selectElement : HTMLSelectElement;
 
-  constructor(private dbOperationsService : DbOperationsService,
-              private sortingService : SortingService) { }
+  constructor(
+    private dbOperationsService : DbOperationsService, 
+    private sortingService : SortingService) { }
+
 
   selectOptionHandler(selectedOptionEvent : Event) {
     let e = <HTMLOptionElement>selectedOptionEvent.target;
-    console.log(e.value); 
+
+    this.sortingService.sort(this.authors, e.value);
   }
 
   getAuthors() {
@@ -39,6 +42,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAuthors();
+    //this.sortingService.transferAuthorsData(this.authors);
   }
 
   ngAfterViewInit(): void {

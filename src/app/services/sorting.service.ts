@@ -16,7 +16,7 @@ export class SortingService {
 
       case 'name': {
         specificSortedData = this.selectSpecificData(authorsData, sortType);
-        //this.sortAuthorsByName(specificSortedData);
+        this.sortAuthorsByName(specificSortedData);
         break;
       }
       case 'surname': {
@@ -52,9 +52,11 @@ export class SortingService {
       console.log(el);
     }
 
+    return newObjectList;
+
   }
 
-  sortAuthorsByName(data : [number, string | number | Date | string[]][]) {
+  sortAuthorsByName(data : {id: number, value: string | number | Date | string[]}[]) {
 
   }
 

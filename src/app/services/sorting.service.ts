@@ -8,26 +8,17 @@ export class SortingService {
 
   constructor() { }
 
-  sort(authorsData : Author[], sortType: string) {
+  sort(authorsData : Author[], sortKey: string) {
 
-    let specificSortedData;
+    switch (sortKey) {
 
-    switch (sortType) {
-
-      case 'name': {
-        specificSortedData = this.selectSpecificData(authorsData, sortType);
-        this.sortAuthorsByName(specificSortedData);
-        break;
-      }
-      case 'surname': {
-        this.sortAuthorsBySurname();
-        break;
-      }
+      case 'name':
+      case 'surname': 
       case 'patronymic': {
-        this.sortAuthorsByPatronymic();
+        this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, sortKey);
         break;
       }
-      case 'birth': {
+      case 'birthDate': {
         this.sortAuthorsByBirth();
         break;
       }
@@ -38,34 +29,18 @@ export class SortingService {
     }
   }
 
-  selectSpecificData(authorsData : Author[], sortType: keyof Author) {
-
-    let newObjectList : Array< {id: number, value : string | number | Date | string[] }> = [];
-
-    newObjectList = authorsData.map(function(data) {
-      return {id: data.id, value: data[sortType] };
+  sortAuthorsBy_Name_Surname_Patronymic(data : Author[], key : keyof Author) {
+    return data.sort(function(firstObject, secondObject) {
+      if (firstObject[key] < secondObject[key]) {
+        return -1;
+      }
+      else if (firstObject[key] > secondObject[key]) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
     });
-
-    console.log(newObjectList);
-
-    for (let el of newObjectList) {
-      console.log(el);
-    }
-
-    return newObjectList;
-
-  }
-
-  sortAuthorsByName(data : {id: number, value: string | number | Date | string[]}[]) {
-
-  }
-
-  sortAuthorsBySurname() {
-
-  }
-
-  sortAuthorsByPatronymic() {
-
   }
 
   sortAuthorsByBirth() {

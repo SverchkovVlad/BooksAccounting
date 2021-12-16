@@ -8,12 +8,9 @@ export class SortingService {
 
   constructor() { }
 
-  arrayOfHighlightenedColumns : any = [];
+  arrayOfHighlightenedColumns : NodeListOf<Element>[] = [];
 
   sort(authorsData : Author[], sortKey: string) {
-
-    //let count = this.clojureFunction();
-    //let fucn = this.funcTest(authorsData, sortKey as keyof Author);
 
     switch (sortKey) {
 
@@ -21,11 +18,7 @@ export class SortingService {
       case 'surname': 
       case 'patronymic': {
         this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, sortKey);
-        this.highlightSortedKeyColumns(authorsData, sortKey);
-        // console.log(count());
-        // console.log(count());
-        //console.log(fucn());
-        //console.log(fucn());
+        this.highlightSortedKeyColumns(sortKey);
         break;
       }
       case 'birthDate': {
@@ -51,29 +44,19 @@ export class SortingService {
     });
   }
 
-  highlightSortedKeyColumns(data : Author[], key : keyof Author) : NodeListOf<Element> {
+  highlightSortedKeyColumns(key : keyof Author) : NodeListOf<Element> {
 
     const sortedDataColumns = document.querySelectorAll('.' + key);
 
     this.arrayOfHighlightenedColumns.push(sortedDataColumns);
 
     if (this.arrayOfHighlightenedColumns.length > 1) {
+      this.arrayOfHighlightenedColumns[0].forEach((element : Element) => element.removeAttribute("style"));
+      this.arrayOfHighlightenedColumns.splice(0, 1);
+    }
+
+    sortedDataColumns.forEach((element : Element) => element.setAttribute("style", "background-color: lightgreen;"))
     
-      for (let el in this.arrayOfHighlightenedColumns) {
-
-        for (let el of this.arrayOfHighlightenedColumns[0]) {
-          el.removeAttribute("style");
-        }
-        this.arrayOfHighlightenedColumns.splice(0, el);
-      }
-      
-    }
-
-    for (let element of sortedDataColumns) {
-      element.setAttribute("style", "background-color: lightgreen;");
-    }
-
-    console.log(this.arrayOfHighlightenedColumns);
     return sortedDataColumns;
 
   }

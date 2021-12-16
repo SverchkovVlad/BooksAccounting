@@ -146,6 +146,10 @@ h1, h3 {
     cursor: pointer;
 }
 
+.sorted-columns {
+    background-color: greenyellow;
+}
+
 .a-buttons {
     /*border: 3px solid green;*/
     margin: 30px auto;

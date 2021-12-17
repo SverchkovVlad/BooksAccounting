@@ -17,13 +17,11 @@ export class SortingService {
       case 'name':
       case 'surname': 
       case 'patronymic':
-      case 'birthDate': {
+      case 'birthDate':
+      case 'booksList': {
         this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, sortKey);
         this.highlightSortedKeyColumns(sortKey);
         break;
-      }
-      case 'books': {
-        this.sortAuthorsByBooksAmount();
       }
 
     }
@@ -34,6 +32,10 @@ export class SortingService {
 
       if (key == "birthDate") {
         return +new Date(firstObject.birthDate) - +new Date(secondObject.birthDate);
+      }
+
+      else if (key == "booksList") {
+        return secondObject.booksList.length - firstObject.booksList.length;
       }
 
       else {

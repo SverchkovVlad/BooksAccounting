@@ -16,13 +16,10 @@ export class SortingService {
 
       case 'name':
       case 'surname': 
-      case 'patronymic': {
+      case 'patronymic':
+      case 'birthDate': {
         this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, sortKey);
         this.highlightSortedKeyColumns(sortKey);
-        break;
-      }
-      case 'birthDate': {
-        this.sortAuthorsByBirth();
         break;
       }
       case 'books': {
@@ -35,11 +32,18 @@ export class SortingService {
   sortAuthorsBy_Name_Surname_Patronymic(data : Author[], key : keyof Author) {
     return data.sort(function(firstObject, secondObject) {
 
-      return firstObject[key] > secondObject[key] ? 1 : firstObject[key] < secondObject[key] ? -1 : 0;
+      if (key == "birthDate") {
+        return +new Date(firstObject.birthDate) - +new Date(secondObject.birthDate);
+      }
 
-      // if (firstObject[key] < secondObject[key]) return -1;
-      // else if (firstObject[key] > secondObject[key]) return 1;
-      // else return 0;
+      else {
+        return firstObject[key] > secondObject[key] ? 1 : firstObject[key] < secondObject[key] ? -1 : 0;
+      
+        // if (firstObject[key] < secondObject[key]) return -1;
+        // else if (firstObject[key] > secondObject[key]) return 1;
+        // else return 0;
+      
+      }
 
     });
   }
@@ -58,39 +62,6 @@ export class SortingService {
     sortedDataColumns.forEach((element : Element) => element.setAttribute("style", "background-color: lightgreen;"))
     
     return sortedDataColumns;
-
-  }
-
-  // clojureFunction() {
-
-  //     let current = 0;
-  //     return function () {
-  //       current++;
-  //       return current;
-  //     }
-    
-  // };
-
-  // funcTest(data: Author[], key : keyof Author) {
-
-  //   let arr : any = [];
-  //   let sortedDataColumns = document.querySelectorAll('.' + key);
-
-  //   return function() {
-
-  //     for (let element of sortedDataColumns) {
-  //       arr.push(element.setAttribute("style", "background-color: lightgreen;"));
-  //     }
-
-  //     for (let arrEl of arr) {
-  //       console.dir(arrEl);
-  //     }
-
-  //     return arr;
-  //   }
-  // }
-
-  sortAuthorsByBirth() {
 
   }
 

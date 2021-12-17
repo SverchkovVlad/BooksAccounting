@@ -40,8 +40,8 @@
                 <td class = "surname"> {{author.surname}}</td>
                 <td class = "patronymic"> {{author.patronymic}}</td>
                 <td class = "birthDate"> {{author.birthDate}}</td>
-                <td> 
-                    <ul class = "booksList">
+                <td class = "booksList"> 
+                    <ul>
                         <li *ngFor = "let book of author.booksList">{{book}}</li>
                     </ul>
                 </td>

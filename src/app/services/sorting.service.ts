@@ -10,21 +10,9 @@ export class SortingService {
 
   arrayOfHighlightenedColumns : NodeListOf<Element>[] = [];
 
-  sort(authorsData : Author[], sortKey: string) {
-
-    switch (sortKey) {
-
-      case 'name':
-      case 'surname': 
-      case 'patronymic':
-      case 'birthDate':
-      case 'booksList': {
-        this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, sortKey);
-        this.highlightSortedKeyColumns(sortKey);
-        break;
-      }
-
-    }
+  sort(authorsData : Author[], key : keyof Author) {
+    this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, key);
+    this.highlightSortedKeyColumns(key);
   }
 
   sortAuthorsBy_Name_Surname_Patronymic(data : Author[], key : keyof Author) {
@@ -64,10 +52,6 @@ export class SortingService {
     sortedDataColumns.forEach((element : Element) => element.setAttribute("style", "background-color: lightgreen;"))
     
     return sortedDataColumns;
-
-  }
-
-  sortAuthorsByBooksAmount() {
 
   }
 

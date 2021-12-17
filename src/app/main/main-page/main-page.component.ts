@@ -22,7 +22,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   selectOptionHandler(selectedOptionEvent : Event) {
     let e = <HTMLOptionElement>selectedOptionEvent.target;
 
-    this.sortingService.sort(this.authors, e.value);
+    this.sortingService.sort(this.authors, e.value as keyof Author);
   }
 
   getAuthors() {

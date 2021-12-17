@@ -119,11 +119,17 @@ h1, h3 {
 
 .authors-table li {
     list-style-type: square;
+    list-style-position: inside;
 }
 
 .authors-table ul {
     padding-left: 0;
 }
+
+/* .authors-table li span {
+    position: relative;
+    left: -10px;
+} */
 
 .authors-table button {
     margin: 10px auto;

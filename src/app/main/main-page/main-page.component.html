@@ -41,9 +41,12 @@
                 <td class = "patronymic"> {{author.patronymic}}</td>
                 <td class = "birthDate"> {{author.birthDate}}</td>
                 <td class = "booksList"> 
-                    <ul>
-                        <li *ngFor = "let book of author.booksList">{{book}}</li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <li *ngFor = "let book of author.booksList"><span>{{book}}</span></li>
+                        </ul>
+                    </div>
+                    
                 </td>
                 <td>
                     <button>Edit</button>

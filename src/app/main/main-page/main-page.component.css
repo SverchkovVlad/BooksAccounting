@@ -74,6 +74,11 @@ h1, h3 {
 
 .sort-search-wrap input {
     height: 30px;
+    margin-left: 10px;
+}
+
+.sort-search-wrap label {
+    font-size: 18px;
 }
 
 .list-sorting select {

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Author } from 'src/app/interfaces/author';
 import { DbOperationsService } from 'src/app/services/db-operations.service';
+import { ItemSearchService } from 'src/app/services/item-search.service';
 import { SortingService } from 'src/app/services/sorting.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dbOperationsService : DbOperationsService, 
-    private sortingService : SortingService) { }
+    private sortingService : SortingService,
+    private itemSearchService : ItemSearchService) { }
 
 
   selectOptionHandler(selectedOptionEvent : Event) {
@@ -41,54 +43,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   searchBook() {
 
     if (this.searchBookName != "") {
-      this.authors = this.authors.filter(author => {
-        //console.log(author.name.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase()));
-        // return author.name.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
-
-        // console.log(author.booksList.filter(book => {
-        //   return book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
-        // }));
-
-        if(author.booksList.some(book => 
-          book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase()))) 
-        {
-          return true;
-        }
-        else return false;
-
-        // author.booksList.forEach((element, index, array) => {
-          
-        // });
-
-
-
-        // let a : any;
-
-        // for (let i = 0; i < author.booksList.length; i++) {
-        //   a = author.booksList[i].toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
-        //   if (a == true) return true;
-        // }
-
-        
-
-        // return author.booksList.filter(book => {
-          
-        //   return book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
-        // })
-        
-      })
+     this.authors = this.itemSearchService.searchBook(this.authors, this.searchBookName);
     }
     else {
       this.ngOnInit();
     }
     
-  }
-
-  showPseudoAuthors() {
-    console.log(this.pseudoAuthors);
-  }
-  func() {
-
   }
 
   ngOnInit(): void {

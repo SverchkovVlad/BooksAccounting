@@ -26,11 +26,13 @@
             </div>
 
             <label for="searchField">
-                Type book`s name: <input type="search" name="" id="searchField">
+                Type book`s name: <input [(ngModel)] = "searchBookName" 
+                type="search" name="searchField" id="searchField" (input) = "searchBook()">
             </label>
-            
 
         </div>
+
+        <button (click) = "showPseudoAuthors()">Show pseudo authors</button>
 
         <!-- Make this using table and FlexBox or Grid for responsive design -->
         <!-- https://www.w3schools.com/css/css_table.asp -->

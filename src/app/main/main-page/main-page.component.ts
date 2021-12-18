@@ -11,8 +11,8 @@ import { SortingService } from 'src/app/services/sorting.service';
 export class MainPageComponent implements OnInit, AfterViewInit {
 
   authors : Author[];
-  selectOption : HTMLCollectionOf<HTMLOptionElement>;
-  selectElement : HTMLSelectElement;
+  searchBookName : string;
+  pseudoAuthors : Author[];
 
   constructor(
     private dbOperationsService : DbOperationsService, 
@@ -36,6 +36,59 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       this.getAuthors();
       console.log("Element has been deleted!");
     })
+  }
+
+  searchBook() {
+
+    if (this.searchBookName != "") {
+      this.authors = this.authors.filter(author => {
+        //console.log(author.name.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase()));
+        // return author.name.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
+
+        // console.log(author.booksList.filter(book => {
+        //   return book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
+        // }));
+
+        if(author.booksList.some(book => 
+          book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase()))) 
+        {
+          return true;
+        }
+        else return false;
+
+        // author.booksList.forEach((element, index, array) => {
+          
+        // });
+
+
+
+        // let a : any;
+
+        // for (let i = 0; i < author.booksList.length; i++) {
+        //   a = author.booksList[i].toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
+        //   if (a == true) return true;
+        // }
+
+        
+
+        // return author.booksList.filter(book => {
+          
+        //   return book.toLocaleLowerCase().match(this.searchBookName.toLocaleLowerCase());
+        // })
+        
+      })
+    }
+    else {
+      this.ngOnInit();
+    }
+    
+  }
+
+  showPseudoAuthors() {
+    console.log(this.pseudoAuthors);
+  }
+  func() {
+
   }
 
   ngOnInit(): void {

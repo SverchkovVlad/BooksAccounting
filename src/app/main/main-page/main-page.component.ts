@@ -28,8 +28,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
-      //console.log(this.authors);
-      //console.log(this.authors[0]);
     })
   }
 
@@ -42,7 +40,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAuthors();
-    //this.sortingService.transferAuthorsData(this.authors);
   }
 
   ngAfterViewInit(): void {

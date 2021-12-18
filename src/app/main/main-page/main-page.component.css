@@ -64,8 +64,14 @@ h1, h3 {
     font-size: 40px;
 }
 
-.list-sorting {
-    margin: 30px auto;
+.sort-search-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sort-search-wrap input {
+    height: 30px;
 }
 
 .list-sorting select {

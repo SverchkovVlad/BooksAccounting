@@ -1,32 +1,41 @@
-<section class = "intro-wrap">
-    
-        <div class="center intro-text">
-            <h1>V.S. Library</h1>
-            <span class = "quote">Today`s knowledge, tommorow`s power</span>
-        </div>
+<section class="intro-wrap">
+
+    <div class="center intro-text">
+        <h1>V.S. Library</h1>
+        <span class="quote">Today`s knowledge, tommorow`s power</span>
+    </div>
 
 </section>
 
-<section class = "books-container">
-    <div class = "center">
+<section class="books-container">
+    <div class="center">
         <h3>List of our authors & books</h3>
 
-        <div class="list-sorting">
-            <!-- <select (change) = "selectOptionHandler($event.target)"> -->
-            <!-- <select class = "sort-method-selection"> -->
-            <select (change) = "selectOptionHandler($event)">
-                <option value="name">Sort by name</option>
-                <option value="surname">Sort by surname</option>
-                <option value="patronymic">Sort by patronymic</option>
-                <option value="birthDate">Sort by date of birth</option>
-                <option value="booksList">Sort by amount of books</option>
-            </select>
+        <div class = "sort-search-wrap">
+
+            <div class="list-sorting">
+                <!-- <select (change) = "selectOptionHandler($event.target)"> -->
+                <!-- <select class = "sort-method-selection"> -->
+                <select (change)="selectOptionHandler($event)">
+                    <option value="name">Sort by name</option>
+                    <option value="surname">Sort by surname</option>
+                    <option value="patronymic">Sort by patronymic</option>
+                    <option value="birthDate">Sort by date of birth</option>
+                    <option value="booksList">Sort by amount of books</option>
+                </select>
+            </div>
+
+            <label for="searchField">
+                Type book`s name: <input type="search" name="" id="searchField">
+            </label>
+            
+
         </div>
 
         <!-- Make this using table and FlexBox or Grid for responsive design -->
         <!-- https://www.w3schools.com/css/css_table.asp -->
 
-        <table class = "authors-table">
+        <table class="authors-table">
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
@@ -35,22 +44,22 @@
                 <th>Books</th>
                 <th>Options</th>
             </tr>
-            <tr class = "author-data" *ngFor = "let author of authors">
-                <td class = "name"> {{author.name}}</td>
-                <td class = "surname"> {{author.surname}}</td>
-                <td class = "patronymic"> {{author.patronymic}}</td>
-                <td class = "birthDate"> {{author.birthDate}}</td>
-                <td class = "booksList"> 
+            <tr class="author-data" *ngFor="let author of authors">
+                <td class="name"> {{author.name}}</td>
+                <td class="surname"> {{author.surname}}</td>
+                <td class="patronymic"> {{author.patronymic}}</td>
+                <td class="birthDate"> {{author.birthDate}}</td>
+                <td class="booksList">
                     <div>
                         <ul>
-                            <li *ngFor = "let book of author.booksList"><span>{{book}}</span></li>
+                            <li *ngFor="let book of author.booksList"><span>{{book}}</span></li>
                         </ul>
                     </div>
-                    
+
                 </td>
                 <td>
                     <button>Edit</button>
-                    <button (click) = "deleteAuthor(author.id)">Delete</button>
+                    <button (click)="deleteAuthor(author.id)">Delete</button>
                 </td>
 
             </tr>
@@ -67,4 +76,3 @@
 </section>
 
 <footer></footer>
-

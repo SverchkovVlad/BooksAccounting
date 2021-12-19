@@ -1,0 +1,111 @@
+@font-face {
+    font-family: AlatsiRegular;
+    src: url('../../fonts/alatsi_regular.ttf');
+}
+
+@font-face {
+    font-family: FrederickaGreat;
+    src: url('../../fonts/FrederickatheGreat-Regular.ttf');
+}
+
+header {
+    text-align: center;
+    font-size: 40px;
+    font-family: AlatsiRegular, sans-serif;
+    margin-bottom: 80px;
+}
+
+main {
+    font-family: FrederickaGreat, sans-serif;
+}
+
+.center {
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+}
+
+input {
+    display: block;
+    width: 80%;
+    height: 30px;
+    margin: 10px auto 30px auto;
+    font-size: 16px;
+}
+
+.rrr {
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+}
+
+.wrap-paper {
+    background: #fff;
+    padding: 40px;
+    margin-bottom: 20%;
+    position: relative;
+  }
+  
+  .wrap-paper,
+  .wrap-paper::before,
+  .wrap-paper::after {
+    /* Styles to distinguish sheets from one another */
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.25);
+    border: 1px solid #bbb;
+  }
+  
+  .wrap-paper::before,
+  .wrap-paper::after {
+    content: "";
+    position: absolute;
+    height: 120%;
+    width: 105%;
+    background-color: #eee;
+  }
+  
+  .wrap-paper::before {
+    right: -2%;
+    top: -5%;
+    transform: rotate(-2deg);
+    z-index: -1;
+  }
+  
+  .wrap-paper::after {
+    top: -4%;
+    right: -2%;
+    transform: rotate(3deg);
+    z-index: -2;
+    
+  }
+
+  label {
+      display: block;
+      text-align: center;
+      font-size: 40px;
+      margin: 20px auto 30px auto;
+  }
+
+  .genre-card {
+      border: 1px solid;
+      margin: 30px auto;
+      padding: 15px;
+      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: 58% 18% 18%;
+      grid-gap: 2%;
+      border: 1px solid red;
+  }
+
+  .genre-card span {
+      float: left;
+  }
+
+  .genre-button {
+      border: 2px solid;
+  }
+
+  .genre-card button:hover {
+      cursor: pointer;
+  }
+
+

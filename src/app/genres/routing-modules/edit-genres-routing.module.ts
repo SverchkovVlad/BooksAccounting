@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { GenresComponent } from '../genres.component';
 
 const routes: Routes = [
@@ -8,8 +9,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [GenresComponent],         //--------------------Genres COmponent should be added
-  imports: [CommonModule, RouterModule.forChild(routes)], //-----------COmmonModule should be added (*ngFor problem)
+  declarations: [GenresComponent],       //----------------------GenresComponent - Necessary for *ngFor 
+  imports: [CommonModule, RouterModule.forChild(routes)], //------CommonModule necessary for ngFor
   exports: [RouterModule]
 })
 export class EditGenresRoutingModule { }

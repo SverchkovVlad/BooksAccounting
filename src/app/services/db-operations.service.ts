@@ -16,4 +16,12 @@ export class DbOperationsService {
   deleteAuthor(id: number) {
     return this.http.delete(`http://localhost:3000/authors/${id}`);
   }
+
+  getGenres() {
+    return this.http.get('http://localhost:3000/genres');
+  }
+
+  deleteGenre(id: number) {
+    return this.http.delete(`http://localhost:3000/authors/${id}`);
+  }
 }

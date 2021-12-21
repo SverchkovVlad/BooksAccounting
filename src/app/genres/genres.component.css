@@ -85,6 +85,24 @@ input {
       margin: 20px auto 30px auto;
   }
 
+  button {
+    font-family: AlatsiRegular;
+  }
+
+  .add-edit-btn {
+      width: 100%;
+      min-height: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20%;
+  }
+
+  .add-edit-btn button {
+    text-transform: uppercase;
+    position: relative;
+    border: 2px solid black;
+  }
+
   .genre-card {
       border: 1px solid;
       margin: 30px auto;
@@ -109,11 +127,11 @@ input {
       height: 30px;
   }
 
-  .genre-card button:hover {
+  .genre-card button:hover, .add-edit-btn button:hover {
       cursor: pointer;
   }
 
-  .genre-card button:active {
+  .genre-card button:active, .add-edit-btn button:active {
       top: 3px;
       left: 3px;
   }

@@ -11,8 +11,11 @@
             <label for="genreInputField">Type new genre or Edit an existing one</label>
             <input #genreInputField type="text" id = "genreInputField">
 
-            <button>Add new genre</button>
-            <button>Save edited</button>
+            <div class="add-edit-btn">
+                <button>Add new genre</button>
+                <button>Save edited</button>
+            </div>
+            
 
             <div class = "genre-card" *ngFor = "let genre of genres">
                 <span>{{genre.name}}</span>

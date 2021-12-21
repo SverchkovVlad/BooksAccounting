@@ -33,11 +33,11 @@ input {
     font-size: 16px;
 }
 
-.rrr {
+/* .rrr {
     margin: 0 auto;
     width: 70%;
     height: auto;
-}
+} */
 
 .wrap-paper {
     background: #fff;
@@ -58,7 +58,7 @@ input {
   .wrap-paper::after {
     content: "";
     position: absolute;
-    height: 120%;
+    height: 105%;
     width: 105%;
     background-color: #eee;
   }
@@ -93,19 +93,29 @@ input {
       display: grid;
       grid-template-columns: 58% 18% 18%;
       grid-gap: 2%;
-      border: 1px solid red;
+      vertical-align: middle;
   }
 
   .genre-card span {
       float: left;
+      /*For centering text in span*/
+      display: grid;
+      align-items: center;
   }
 
-  .genre-button {
-      border: 2px solid;
+  .genre-card button {
+      border: none;
+      position: relative;
+      height: 30px;
   }
 
   .genre-card button:hover {
       cursor: pointer;
+  }
+
+  .genre-card button:active {
+      top: 3px;
+      left: 3px;
   }
 
 

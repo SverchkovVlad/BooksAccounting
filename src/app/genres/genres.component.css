@@ -25,11 +25,11 @@ main {
     height: auto;
 }
 
-input {
+input.main-input {
     display: block;
     width: 80%;
     height: 30px;
-    margin: 10px auto 30px auto;
+    margin: 50px auto;
     font-size: 16px;
 }
 
@@ -42,7 +42,7 @@ input {
 .wrap-paper {
     background: #fff;
     padding: 40px;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
     position: relative;
   }
   
@@ -78,7 +78,7 @@ input {
     
   }
 
-  label {
+  label.input-title {
       display: block;
       text-align: center;
       font-size: 40px;
@@ -89,18 +89,21 @@ input {
     font-family: AlatsiRegular;
   }
 
-  .add-edit-btn {
+  .add-edit-btnDiv {
       width: 100%;
       min-height: 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 20%;
+      margin-top: 50px;
+      margin-bottom: 50px;
   }
 
-  .add-edit-btn button {
+  .add-edit-btnDiv button {
     text-transform: uppercase;
     position: relative;
     border: 2px solid black;
+    font-size: 16px;
   }
 
   .genre-card {
@@ -116,6 +119,7 @@ input {
 
   .genre-card span {
       float: left;
+      font-size: 20px;
       /*For centering text in span*/
       display: grid;
       align-items: center;
@@ -127,13 +131,88 @@ input {
       height: 30px;
   }
 
-  .genre-card button:hover, .add-edit-btn button:hover {
+  .genre-card button:hover, .add-edit-btnDiv button:hover {
       cursor: pointer;
   }
 
-  .genre-card button:active, .add-edit-btn button:active {
+  .genre-card button:active, .add-edit-btnDiv button:active {
       top: 3px;
       left: 3px;
   }
+
+  @media screen and (max-width: 1200px){
+      label.input-title {
+        font-size: 34px;
+      }
+  }
+
+  @media screen and (max-width: 1024px){
+    label.input-title {
+      font-size: 30px;
+    }
+
+    
+
+    .genre-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .genre-card span{
+        text-align: center;
+        grid-column: 1 / 3;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .add-edit-btnDiv {
+        grid-template-columns: 1fr;
+    }
+
+    .add-edit-btnDiv button {
+        height: 40px;
+    }
+
+    .center {
+        width: 90%;
+    }
+
+    .wrap-paper::before,
+    .wrap-paper::after {
+        height: 105%;
+        width: 95%;
+        top: -2%;
+        right: 3%;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+    .center {
+        width: 100%;
+    }
+
+    .wrap-paper::before,
+    .wrap-paper::after {
+        content: none;
+    }
+
+    .wrap-paper {
+        margin-bottom: 0;
+    }
+
+    input.main-input {
+        width: 98%;
+    }
+
+    header {
+        margin-bottom: 40px;
+    }
+
+    .genre-card span {
+        font-size: 18px;
+    }
+}
+
 
 

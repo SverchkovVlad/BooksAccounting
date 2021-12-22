@@ -12,7 +12,7 @@
             <input class = "main-input" #genreInputField type="text" id = "genreInputField">
 
             <div class="add-edit-btnDiv">
-                <button>Add new genre</button>
+                <button (click) = "addGenre(genreInputField.value)">Add new genre</button>
                 <button>Save edited</button>
             </div>
             
@@ -20,7 +20,7 @@
                 <span>{{genre.name}}</span>
 
                 <button>Edit</button>
-                <button>Delete</button>
+                <button (click) = "deleteGenre(genre.id)">Delete</button>
             </div>
 
         </div>

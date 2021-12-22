@@ -17,11 +17,18 @@ export class DbOperationsService {
     return this.http.delete(`http://localhost:3000/authors/${id}`);
   }
 
+
+  /* Methods for genres */
+
+  setGenres(inputText : string) {
+    return this.http.post(`http://localhost:3000/genres`, {name : inputText});
+  }
+
   getGenres() {
     return this.http.get('http://localhost:3000/genres');
   }
 
   deleteGenre(id: number) {
-    return this.http.delete(`http://localhost:3000/genress/${id}`);
+    return this.http.delete(`http://localhost:3000/genres/${id}`);
   }
 }

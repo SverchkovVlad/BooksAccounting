@@ -14,6 +14,12 @@ export class GenresComponent implements OnInit {
   constructor(
     private dbOperationsService : DbOperationsService) { }
 
+    addGenre(inputText : string) {
+      this.dbOperationsService.setGenres(inputText).subscribe(genre => {
+        this.genres.push(<Genre>genre);
+      })
+    }
+
     getGenres() {
       this.dbOperationsService.getGenres().subscribe(item => {
         this.genres = <Genre[]>item;

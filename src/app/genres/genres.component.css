@@ -10,7 +10,7 @@
 
 header {
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
     font-family: AlatsiRegular, sans-serif;
     margin-bottom: 80px;
 }
@@ -21,7 +21,7 @@ main {
 
 .center {
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
     height: auto;
 }
 
@@ -81,7 +81,7 @@ input.main-input {
   label.input-title {
       display: block;
       text-align: center;
-      font-size: 40px;
+      font-size: 30px;
       margin: 20px auto 30px auto;
   }
 
@@ -94,7 +94,7 @@ input.main-input {
       min-height: 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 20%;
+      grid-gap: 30%;
       margin-top: 50px;
       margin-bottom: 50px;
   }
@@ -103,7 +103,7 @@ input.main-input {
     text-transform: uppercase;
     position: relative;
     border: 2px solid black;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .genre-card {
@@ -119,7 +119,7 @@ input.main-input {
 
   .genre-card span {
       float: left;
-      font-size: 20px;
+      font-size: 16px;
       /*For centering text in span*/
       display: grid;
       align-items: center;
@@ -140,18 +140,19 @@ input.main-input {
       left: 3px;
   }
 
-  @media screen and (max-width: 1200px){
-      label.input-title {
-        font-size: 34px;
-      }
-  }
-
   @media screen and (max-width: 1024px){
-    label.input-title {
-      font-size: 30px;
+
+    .center {
+        width: 70%;
     }
 
-    
+    .genre-card span {
+        font-size: 18px;
+    }
+
+    .add-edit-btnDiv {
+        grid-gap: 20%;
+    }
 
     .genre-card {
         grid-template-columns: 1fr 1fr;
@@ -165,6 +166,7 @@ input.main-input {
 }
 
 @media screen and (max-width: 768px){
+
     .add-edit-btnDiv {
         grid-template-columns: 1fr;
     }

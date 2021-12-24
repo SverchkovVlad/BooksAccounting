@@ -8,19 +8,32 @@
     <div class="center">
         <div class="wrap-paper">
 
-            <label class = "input-title" for="genreInputField">Type new genre or Edit an existing one</label>
-            <input class = "main-input" #genreInputField type="text" id = "genreInputField">
+            <form #formGenres_react = "ngForm" [formGroup] = "formGenresGroup">
+                <label class="input-title" for="genreInputField">Type new genre or Edit an existing one</label>
+                <input 
+                    class="main-input" 
+                    #genreInputField 
+                    type="text" 
+                    id="genreInputField"
+                    formControlName = "genre">
 
-            <div class="add-edit-btnDiv">
-                <button (click) = "addGenre(genreInputField.value)">Add new genre</button>
-                <button>Save edited</button>
-            </div>
-            
-            <div class = "genre-card" *ngFor = "let genre of genres">
+                <div class="add-edit-btnDiv">
+                    <input 
+                        type = "button" 
+                        (click)="addGenre(genreInputField.value)" 
+                        [disabled] = "formGenresGroup.invalid"
+                        value = "Add new genre"
+                    >
+                    <input type = "button" value = "Save edited">
+                </div>
+            </form>
+
+
+            <div class="genre-card" *ngFor="let genre of genres">
                 <span>{{genre.name}}</span>
 
                 <button>Edit</button>
-                <button (click) = "deleteGenre(genre.id)">Delete</button>
+                <button (click)="deleteGenre(genre.id)">Delete</button>
             </div>
 
         </div>

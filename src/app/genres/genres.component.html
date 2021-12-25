@@ -15,7 +15,17 @@
                     #genreInputField 
                     type="text" 
                     id="genreInputField"
-                    formControlName = "genre">
+                    formControlName = "genre"
+                >
+
+                <div class = "main-input-error" 
+                    *ngIf = "formGenresGroup.get('genre')?.invalid">
+                    Input field cannot have less, than 4 symbols!
+                </div>
+
+                <div class = "main-input-error empty" style = "display: none">
+                    Input field cannot be empty!
+                </div>
 
                 <div class="add-edit-btnDiv">
                     <input 
@@ -23,6 +33,7 @@
                         (click)="addGenre(genreInputField.value)" 
                         [disabled] = "formGenresGroup.invalid"
                         value = "Add new genre"
+                        
                     >
                     <input type = "button" value = "Save edited">
                 </div>

@@ -25,6 +25,7 @@ export class GenresComponent implements OnInit {
       });
 
       this.clearInputField();
+      this.showInfo('info', inputText, 'add');
     }
     else {
       this.showEmptyError();
@@ -48,6 +49,7 @@ export class GenresComponent implements OnInit {
 
     this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
     this.clearInputField();
+    this.showInfo('info', newName, 'edit');
   }
 
   deleteGenre(id: number) {
@@ -59,10 +61,28 @@ export class GenresComponent implements OnInit {
   showEmptyError() {
     let elementEmptyError = document.querySelector('.empty') as HTMLElement;
     elementEmptyError.style.display = "block";
-    window.setTimeout(this.hideEmptyError, 2000, elementEmptyError);
+    window.setTimeout(this.hideElement, 2000, elementEmptyError);
   }
 
-  hideEmptyError(element : HTMLDivElement) {
+  showInfo(cssClass: string, inputText: string, typeOfMessage: string) {
+    let element = document.querySelector('.blank') as HTMLElement;
+    element.classList.add(cssClass);
+
+    switch (typeOfMessage) {
+      case 'add': 
+        element.innerHTML = "You have successfully added genre <b>" + inputText + "</b>";
+        break;
+      case 'edit': 
+        element.innerHTML = "New name of selected genre is <b>" + inputText + "</b>";
+        break;
+    }
+    
+    element.style.display = "block";
+
+    window.setTimeout(this.hideElement, 2000, element);
+  }
+
+  hideElement(element : HTMLDivElement) {
     element.style.display = "none";
   }
 

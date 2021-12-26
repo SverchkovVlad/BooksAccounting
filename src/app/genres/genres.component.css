@@ -125,6 +125,13 @@ input[type=text].ng-invalid {
     padding: 20px;
 }
 
+.info {
+    background-color: rgb(207, 255, 152);
+    border-left: 5px solid green;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
 @media screen and (max-width: 1024px) {
 
     .center {

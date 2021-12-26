@@ -34,16 +34,20 @@
                         value = "Add new genre"
                         
                     >
-                    <input type = "button" value = "Save edited">
+                    
+                    <input 
+                        (click) = "finishEditGenre(genreInputField.value)" 
+                        type = "button" 
+                        value = "Save edited"
+                    >
                 </div>
             </form>
-
 
             <div class="genre-card" *ngFor="let genre of genres">
                 <span>{{genre.name}}</span>
 
-                <button>Edit</button>
-                <button (click)="deleteGenre(genre.id)">Delete</button>
+                <button (click) = "startEditGenre(genre, genreInputField)">Edit</button>
+                <button (click) = "deleteGenre(genre.id)">Delete</button>
             </div>
 
         </div>

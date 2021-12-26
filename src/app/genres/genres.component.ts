@@ -12,6 +12,7 @@ export class GenresComponent implements OnInit {
 
   formGenresGroup: FormGroup = new FormGroup({});
   genres: Genre[];
+  selectedGenre : Genre;
 
   constructor(
     private dbOperationsService: DbOperationsService,
@@ -29,6 +30,32 @@ export class GenresComponent implements OnInit {
 
   }
 
+  getGenres() {
+    this.dbOperationsService.getGenres().subscribe(item => {
+      this.genres = <Genre[]>item;
+    })
+  }
+
+  startEditGenre(genre: Genre, input: HTMLInputElement) {
+    this.selectedGenre = genre;
+    input.value = genre.name;
+  }
+
+  finishEditGenre(newName : string) {
+    this.selectedGenre.name = newName;
+
+    this.dbOperationsService.editGenre(this.selectedGenre).subscribe( res => {
+      console.log(res);
+      
+    });
+  }
+
+  deleteGenre(id: number) {
+    this.dbOperationsService.deleteGenre(id).subscribe(item => {
+      this.getGenres();
+    })
+  }
+
   showEmptyError() {
     let elementEmptyError = document.querySelector('.empty') as HTMLElement;
     elementEmptyError.style.display = "block";
@@ -39,32 +66,11 @@ export class GenresComponent implements OnInit {
     element.style.display = "none";
   }
 
-  getGenres() {
-    this.dbOperationsService.getGenres().subscribe(item => {
-      this.genres = <Genre[]>item;
-    })
-  }
-
-  deleteGenre(id: number) {
-    this.dbOperationsService.deleteGenre(id).subscribe(item => {
-      this.getGenres();
-    })
-  }
-
-  // checkInput(inputValue : string) {
-  //   if (!inputValue) {
-  //     this.boolInputEmpty = true;
-  //   }
-  //   else {
-  //     this.boolInputEmpty = false;
-  //   }
-  // }
-
   ngOnInit(): void {
     this.getGenres();
 
     this.formGenresGroup = this.fBuilder.group({
-      genre: this.fBuilder.control('', [Validators.nullValidator, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
+      genre: this.fBuilder.control('', [Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
     });
 
   }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Author } from '../interfaces/author';
+import { Genre } from '../interfaces/genre';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,9 @@ export class DbOperationsService {
   deleteGenre(id: number) {
     return this.http.delete(`http://localhost:3000/genres/${id}`);
   }
+
+  editGenre(genre: Genre) {
+    return this.http.put(`http://localhost:3000/genres/${genre.id}`, genre);
+  }
+  
 }

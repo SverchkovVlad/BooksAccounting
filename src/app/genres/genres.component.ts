@@ -22,7 +22,9 @@ export class GenresComponent implements OnInit {
     if (inputText) {
       this.dbOperationsService.setGenres(inputText).subscribe(genre => {
         this.genres.push(<Genre>genre);
-      })
+      });
+
+      this.clearInputField();
     }
     else {
       this.showEmptyError();
@@ -44,10 +46,8 @@ export class GenresComponent implements OnInit {
   finishEditGenre(newName : string) {
     this.selectedGenre.name = newName;
 
-    this.dbOperationsService.editGenre(this.selectedGenre).subscribe( res => {
-      console.log(res);
-      
-    });
+    this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
+    this.clearInputField();
   }
 
   deleteGenre(id: number) {
@@ -64,6 +64,11 @@ export class GenresComponent implements OnInit {
 
   hideEmptyError(element : HTMLDivElement) {
     element.style.display = "none";
+  }
+
+  clearInputField() {
+    let input = document.querySelector('.main-input') as HTMLInputElement;
+    if (input) input.value = "";
   }
 
   ngOnInit(): void {

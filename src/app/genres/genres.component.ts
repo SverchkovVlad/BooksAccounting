@@ -75,7 +75,7 @@ export class GenresComponent implements OnInit {
     this.getGenres();
 
     this.formGenresGroup = this.fBuilder.group({
-      genre: this.fBuilder.control('', [Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
+      genre: this.fBuilder.control('', [Validators.minLength(4), Validators.pattern('^[a-zA-Z ]+$')])
     });
 
   }

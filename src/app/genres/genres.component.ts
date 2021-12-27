@@ -47,11 +47,18 @@ export class GenresComponent implements OnInit {
   }
 
   finishEditGenre(newName : string) {
-    this.selectedGenre.name = newName;
 
-    this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
-    this.clearInputField();
-    this.showMessageService.showInfo('info', newName, 'edit');
+    if (newName) {
+      this.selectedGenre.name = newName;
+
+      this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
+      this.clearInputField();
+      this.showMessageService.showInfo('info', newName, 'edit');
+    }
+    else {
+      this.showMessageService.showInfo('main-input-error', '', 'error-empty');
+    }
+   
   }
 
   deleteGenre(id: number) {

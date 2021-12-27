@@ -38,9 +38,6 @@ input.main-input {
     padding: 40px;
     margin-bottom: 10%;
     position: relative;
-}
-
-.main-section {
     /* Styles to distinguish sheets from one another */
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     border: 1px solid #bbb;

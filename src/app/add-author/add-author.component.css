@@ -1,0 +1,48 @@
+@font-face {
+    font-family: AlatsiRegular;
+    src: url('../../fonts/alatsi_regular.ttf');
+}
+
+@font-face {
+    font-family: FrederickaGreat;
+    src: url('../../fonts/FrederickatheGreat-Regular.ttf');
+}
+
+header, main {
+    font-family: AlatsiRegular, sans-serif;
+}
+
+header {
+    text-align: center;
+    font-size: 35px;
+    margin: 30px auto;
+}
+
+.center {
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+}
+
+.main-section {
+    background: #f2f2f2;
+    padding: 40px;
+    margin-bottom: 10%;
+    position: relative;
+    /* Styles to distinguish sheets from one another */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border: 1px solid #bbb;
+}
+
+main form {
+    display: grid;
+    
+}
+
+input[type='text'] {
+    height: 34px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}

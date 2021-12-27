@@ -210,3 +210,12 @@ h1, h3 {
     border-color: #000000;
     transform: scale(.90);
 }
+
+.book-not-found {
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(255, 199, 199);
+}

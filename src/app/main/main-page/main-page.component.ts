@@ -42,11 +42,19 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   searchBook() {
 
+    let errorElement = document.querySelector('.book-not-found') as HTMLDivElement;
+
     if (this.searchBookName != "") {
      this.authors = this.itemSearchService.searchBook(this.authors, this.searchBookName);
+
+     if (this.authors.length == 0) {
+       if (errorElement) errorElement.style.display = "block";
+     }
+     
     }
     else {
       this.ngOnInit();
+      if (errorElement) errorElement.style.display = "none";
     }
     
   }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output, SimpleChanges } from '@angular
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
+import { ShowMessageService } from '../services/show-message.service';
 
 @Component({
   selector: 'app-genres',
@@ -16,7 +17,8 @@ export class GenresComponent implements OnInit {
 
   constructor(
     private dbOperationsService: DbOperationsService,
-    private fBuilder: FormBuilder) { }
+    private fBuilder: FormBuilder,
+    private showMessageService: ShowMessageService) { }
 
   addGenre(inputText: string) {
     if (inputText) {
@@ -25,10 +27,10 @@ export class GenresComponent implements OnInit {
       });
 
       this.clearInputField();
-      this.showInfo('info', inputText, 'add');
+      this.showMessageService.showInfo('info', inputText, 'add');
     }
     else {
-      this.showEmptyError();
+      this.showMessageService.showInfo('main-input-error', '', 'error-empty');
     }
 
   }
@@ -49,41 +51,13 @@ export class GenresComponent implements OnInit {
 
     this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
     this.clearInputField();
-    this.showInfo('info', newName, 'edit');
+    this.showMessageService.showInfo('info', newName, 'edit');
   }
 
   deleteGenre(id: number) {
     this.dbOperationsService.deleteGenre(id).subscribe(item => {
       this.getGenres();
     })
-  }
-
-  showEmptyError() {
-    let elementEmptyError = document.querySelector('.empty') as HTMLElement;
-    elementEmptyError.style.display = "block";
-    window.setTimeout(this.hideElement, 2000, elementEmptyError);
-  }
-
-  showInfo(cssClass: string, inputText: string, typeOfMessage: string) {
-    let element = document.querySelector('.blank') as HTMLElement;
-    element.classList.add(cssClass);
-
-    switch (typeOfMessage) {
-      case 'add': 
-        element.innerHTML = "You have successfully added genre <b>" + inputText + "</b>";
-        break;
-      case 'edit': 
-        element.innerHTML = "New name of selected genre is <b>" + inputText + "</b>";
-        break;
-    }
-    
-    element.style.display = "block";
-
-    window.setTimeout(this.hideElement, 2000, element);
-  }
-
-  hideElement(element : HTMLDivElement) {
-    element.style.display = "none";
   }
 
   clearInputField() {

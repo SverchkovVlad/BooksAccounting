@@ -1,10 +1,13 @@
 <header>
-    <h3>Adding Author</h3>   
+    <h3>Adding Author</h3>
 </header>
 
 <main>
     <div class="center">
         <div class="main-section">
+
+            <h4>Fill the data below</h4>
+
             <form>
                 <label for="name">Name: </label>
                 <input type="text" name="" id="name" placeholder="Author`s name..">
@@ -13,17 +16,28 @@
                 <input type="text" name="" id="surname" placeholder="Author`s surname..">
 
                 <label for="patronymic">Patronymic: </label>
-                <input type="text" id = "patronymic" placeholder="Author`s patronymic..">
+                <input type="text" id="patronymic" placeholder="Author`s patronymic..">
 
                 <label for="birth">Date of birth: </label>
-                <input type="text" id = "birth" placeholder="Author`s date of birth..">
+                <input type="text" id="birth" placeholder="Author`s date of birth..">
 
-                <label for="book">Add book: </label>
-                <input type="text" id = "book" placeholder="Author`s book..">
+                <div class="book-pages-block">
+                    <label for="book">Add book: </label>
+                    <input type="text" id="book" placeholder="Author`s book..">
 
-                <!-- <select *ngFor = "genre of genres">
+                    <label for="pages">Add pages: </label>
+                    <input type="text" id="pages" placeholder="Number of book`s pages..">
+                </div>
+
+                <input type="button" value="Add new book">
+
+                <select *ngFor = "let genre of genres">
                     <option>{{genre}}</option>
-                </select> -->
+                </select>
+
+                <div *ngFor = "let genre of genres">
+                    {{genre}}
+                </div>
 
                 <input type="button" value="Add author">
             </form>

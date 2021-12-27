@@ -8,8 +8,22 @@
     src: url('../../fonts/FrederickatheGreat-Regular.ttf');
 }
 
-header, main {
+@font-face {
+    font-family: ElegantTypewriter;
+    src: url('../../fonts/elegant_typewriter_regular.ttf');
+}
+
+@font-face {
+    font-family: CutiveRegular;
+    src: url('../../fonts/Cutive-Regular.ttf');
+}
+
+header {
     font-family: AlatsiRegular, sans-serif;
+}
+
+main {
+    font-family: CutiveRegular, sans-serif;
 }
 
 header {
@@ -36,7 +50,14 @@ header {
 
 main form {
     display: grid;
-    
+}
+
+h4 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: CutiveRegular;
 }
 
 input[type='text'] {
@@ -45,4 +66,11 @@ input[type='text'] {
     margin-bottom: 10px;
     padding-left: 8px;
     padding-right: 8px;
+    font-family: ElegantTypewriter;
+    font-size: 16px;
+}
+
+.book-pages-block {
+    border: 1px solid red;
+    display: grid;
 }

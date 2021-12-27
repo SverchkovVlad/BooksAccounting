@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Genre } from '../interfaces/genre';
+import { DbOperationsService } from '../services/db-operations.service';
 
 @Component({
   selector: 'app-add-author',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAuthorComponent implements OnInit {
 
-  constructor() { }
+  genres : Genre[];
+
+  constructor(
+    private dbOperationService : DbOperationsService) { }
+
+    getGenres() {
+      this.dbOperationService.getGenres().subscribe(genre => {
+        this.genres = <Genre[]>genre;
+      })
+    }
 
   ngOnInit(): void {
+    this.getGenres();
   }
 
 }

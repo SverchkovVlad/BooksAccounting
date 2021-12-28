@@ -27,19 +27,16 @@
 
                     <label for="pages">Add pages: </label>
                     <input type="text" id="pages" placeholder="Number of book`s pages..">
+
+                    <select>
+                        <option *ngFor = "let genre of genres">{{genre.name}}</option>
+                    </select>
+
                 </div>
 
-                <input type="button" value="Add new book">
+                <input class = "add-new-book" type="button" value="Add new book">
 
-                <select *ngFor = "let genre of genres">
-                    <option>{{genre}}</option>
-                </select>
-
-                <div *ngFor = "let genre of genres">
-                    {{genre}}
-                </div>
-
-                <input type="button" value="Add author">
+                <input class = "add-new-author" type="button" value="Add author">
             </form>
         </div>
     </div>

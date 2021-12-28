@@ -70,7 +70,59 @@ input[type='text'] {
     font-size: 16px;
 }
 
+input[type=button] {
+    font-family: AlatsiRegular;  
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input[type=button]:hover {
+    cursor: pointer;
+}
+
+input[type=button].add-new-book {
+    background-color: #0f87ff;
+    width: 30%;
+    margin: 40px auto 20px auto;
+    height: 40px;
+    font-size: 18px;
+}
+
+input[type=button].add-new-book, input[type=button].add-new-author {
+    color: white;
+    border: 1px solid #05509b;
+    border-radius: 3px;
+    transition: -ms-transform .3s, -webkit-transform .3s, transform .3s;
+}
+
+input[type=button].add-new-author {
+    background-color: #0A66C2;
+    height: 45px;
+    font-size: 20px;
+}
+
+input[type=button].add-new-author:hover, input[type=button].add-new-book:hover {
+    background-color: #08519b;
+}
+
+input[type=button].add-new-author:active, input[type=button].add-new-book:active {
+    
+    transform: scale(.90);
+}
+
 .book-pages-block {
-    border: 1px solid red;
+    border: 2px dashed black;
+    margin-top: 20px;
+    padding: 20px;
     display: grid;
+}
+
+.book-pages-block select {
+    margin-top: 10px;
+    background-color: #0A66C2;
+    color: white;
+    padding: 12px 12px 12px 5px;
+    border: 2px solid #05509b;
+    font-size: 15px;
+    cursor: pointer;
 }

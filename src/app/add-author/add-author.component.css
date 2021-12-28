@@ -20,16 +20,13 @@
 
 header {
     font-family: AlatsiRegular, sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin: 30px auto;
 }
 
 main {
     font-family: CutiveRegular, sans-serif;
-}
-
-header {
-    text-align: center;
-    font-size: 35px;
-    margin: 30px auto;
 }
 
 .center {
@@ -99,6 +96,7 @@ input[type=button].add-new-author {
     background-color: #0A66C2;
     height: 45px;
     font-size: 20px;
+    text-transform: uppercase;
 }
 
 input[type=button].add-new-author:hover, input[type=button].add-new-book:hover {
@@ -117,12 +115,66 @@ input[type=button].add-new-author:active, input[type=button].add-new-book:active
     display: grid;
 }
 
+.book-pages-block p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
 .book-pages-block select {
     margin-top: 10px;
-    background-color: #0A66C2;
+    background-color: #0f87ff;
     color: white;
     padding: 12px 12px 12px 5px;
     border: 2px solid #05509b;
     font-size: 15px;
     cursor: pointer;
+}
+
+.book-pages-block select {
+    font-family: ElegantTypewriter;
+} 
+
+@media screen and (max-width: 1024px) {
+    input[type=button].add-new-book {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+
+    input[type=button].add-new-book {
+        width: 60%;
+    }
+
+    .center {
+        width: 90%;
+    }
+    
+}
+
+@media screen and (max-width: 666px) {
+    h4 {
+        font-size: 25px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .center {
+        width: 100%;
+    }
+
+    .main-section {
+        margin-bottom: 0;
+    }
+
 }

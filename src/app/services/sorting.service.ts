@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { first } from 'rxjs';
 import { Author } from '../interfaces/author';
 
 @Injectable({
@@ -11,15 +12,19 @@ export class SortingService {
   arrayOfHighlightenedColumns : NodeListOf<Element>[] = [];
 
   sort(authorsData : Author[], key : keyof Author) {
-    this.sortAuthorsBy_Name_Surname_Patronymic(authorsData, key);
+    this.sortAuthorsByKey(authorsData, key);
     this.highlightSortedKeyColumns(key);
   }
 
-  sortAuthorsBy_Name_Surname_Patronymic(data : Author[], key : keyof Author) {
+  sortAuthorsByKey(data : Author[], key : keyof Author) {
     return data.sort(function(firstObject, secondObject) {
 
       if (key == "birthDate") {
-        return +new Date(firstObject.birthDate) - +new Date(secondObject.birthDate);
+
+        let firstEl = firstObject.birthDate.toString().split('/').reverse().join();
+        let secondEl = secondObject.birthDate.toString().split('/').reverse().join();
+
+        return firstEl < secondEl ? -1 : firstEl > secondEl ? 1 : 0;
       }
 
       else if (key == "booksList") {

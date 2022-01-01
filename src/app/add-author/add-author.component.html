@@ -8,18 +8,20 @@
 
             <h4>Fill the data below</h4>
 
-            <form>
+            <form [formGroup] = "formAddAuthor">
                 <label for="name">Name: </label>
-                <input type="text" name="" id="name" placeholder="Author`s name..">
+                <input type="text" formControlName = "name" id="name" placeholder="Author`s name..">
 
                 <label for="surname">Surname: </label>
-                <input type="text" name="" id="surname" placeholder="Author`s surname..">
+                <input type="text" formControlName = "surname" id="surname" placeholder="Author`s surname..">
 
                 <label for="patronymic">Patronymic: </label>
-                <input type="text" id="patronymic" placeholder="Author`s patronymic..">
+                <input type="text" formControlName = "patronymic" id="patronymic" placeholder="Author`s patronymic..">
 
                 <label for="birth">Date of birth: </label>
-                <input type="text" id="birth" placeholder="Author`s date of birth..">
+                <input type="text" formControlName = "dateOfBirth" id="birth" placeholder="dd/mm/yyyy">
+
+                <input type="button" value="Check date of birth value (console)">
 
                 <div class="book-pages-block">
                     <label for="book">Add book: </label>

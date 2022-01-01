@@ -134,6 +134,10 @@ input[type=button].add-new-author:active, input[type=button].add-new-book:active
     font-family: ElegantTypewriter;
 } 
 
+input[type=text].ng-invalid {
+    border: 1px solid red;
+}
+
 @media screen and (max-width: 1024px) {
     input[type=button].add-new-book {
         width: 50%;

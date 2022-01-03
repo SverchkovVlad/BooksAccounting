@@ -35,8 +35,8 @@ main {
     height: auto;
 }
 
-.red {
-    border: 1px solid red;
+select .ng-invalid {
+    border: 3px solid red;
 }
 
 .main-section {
@@ -110,6 +110,11 @@ input[type=button].add-new-author:hover, input[type=button].add-new-book:hover {
 input[type=button].add-new-author:active, input[type=button].add-new-book:active {
     
     transform: scale(.90);
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
 }
 
 .book-pages-block {

@@ -21,10 +21,10 @@
                 <label for="birth">Date of birth: </label>
                 <input type="text" formControlName = "dateOfBirth" id="birth" placeholder="dd/mm/yyyy">
 
-                <div class="book-pages-block" formArrayName = "books"
+                <div formArrayName = "books"
                     *ngFor = "let book of books.controls; let i = index;">
 
-                    <div class = "red" [formGroupName] = "i">
+                    <div class = "book-pages-block" [formGroupName] = "i">
 
                         <label for="book">Add book: </label>
                         <input formControlName = "bookName" type="text" id="book" placeholder="Author`s book..">
@@ -36,29 +36,17 @@
     
                         <!-- formControlName = "bookPagesNum"  -->
     
-                        <p>Select genre of book</p>
+                        <p>Genre of the book</p>
                         <!-- formControlName = "bookGenre" -->
                         <select formControlName = "bookGenre">
+                            <option hidden>Select genre...</option>
                             <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
                         </select>
 
+                        <input *ngIf = "i != 0"
+                            (click) = "deleteBook()" class = "delete-button" type="button" id="pages" value = "Delete">
+
                     </div>
-
-                    <!-- <label for="book">Add book: </label>
-                    <input  type="text" id="book" placeholder="Author`s book.."> -->
-
-                    <!-- formControlName = "bookName" -->
-
-                    <!-- <label for="pages">Add pages: </label>
-                    <input type="text" id="pages" placeholder="Number of book`s pages.."> -->
-
-                    <!-- formControlName = "bookPagesNum"  -->
-
-                    <p>Select genre of book</p>
-                    <!-- formControlName = "bookGenre" -->
-                    <!-- <select>
-                        <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
-                    </select> -->
 
                 </div>
 

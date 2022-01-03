@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
@@ -46,6 +46,10 @@ export class AddAuthorComponent implements OnInit {
     });
   }
 
+  // createBook_new() {
+  //   return new FormControl()
+  // }
+
   // createBook() {
   //   return new FormGroup({
   //     bookName: new FormControl(),
@@ -54,13 +58,17 @@ export class AddAuthorComponent implements OnInit {
   // }
 
   addBook() {
-    this.books = this.formAddAuthor.get('books') as FormArray;
+    //this.books = this.formAddAuthor.get('books') as FormArray;
     this.books.push(this.createBook());
+  }
+
+  deleteBook() {
+    this.books.removeAt(this.books.length - 1);
   }
 
   ngOnInit(): void {
     this.getGenres();
     this.createFormElements();
+    this.books = this.formAddAuthor.get('books') as FormArray;
   }
-
 }

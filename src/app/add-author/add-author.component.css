@@ -35,6 +35,10 @@ main {
     height: auto;
 }
 
+.red {
+    border: 1px solid red;
+}
+
 .main-section {
     background: #f2f2f2;
     padding: 40px;

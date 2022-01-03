@@ -21,25 +21,53 @@
                 <label for="birth">Date of birth: </label>
                 <input type="text" formControlName = "dateOfBirth" id="birth" placeholder="dd/mm/yyyy">
 
-                <input type="button" value="Check date of birth value (console)">
+                <div class="book-pages-block" formArrayName = "books"
+                    *ngFor = "let book of books.controls; let i = index;">
 
-                <div class="book-pages-block">
-                    <label for="book">Add book: </label>
-                    <input type="text" id="book" placeholder="Author`s book..">
+                    <div class = "red" [formGroupName] = "i">
 
-                    <label for="pages">Add pages: </label>
-                    <input type="text" id="pages" placeholder="Number of book`s pages..">
+                        <label for="book">Add book: </label>
+                        <input formControlName = "bookName" type="text" id="book" placeholder="Author`s book..">
+    
+                        <!-- formControlName = "bookName" -->
+    
+                        <label for="pages">Add pages: </label>
+                        <input formControlName = "bookPagesNum" type="text" id="pages" placeholder="Number of book`s pages..">
+    
+                        <!-- formControlName = "bookPagesNum"  -->
+    
+                        <p>Select genre of book</p>
+                        <!-- formControlName = "bookGenre" -->
+                        <select formControlName = "bookGenre">
+                            <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
+                        </select>
+
+                    </div>
+
+                    <!-- <label for="book">Add book: </label>
+                    <input  type="text" id="book" placeholder="Author`s book.."> -->
+
+                    <!-- formControlName = "bookName" -->
+
+                    <!-- <label for="pages">Add pages: </label>
+                    <input type="text" id="pages" placeholder="Number of book`s pages.."> -->
+
+                    <!-- formControlName = "bookPagesNum"  -->
 
                     <p>Select genre of book</p>
-                    <select>
-                        <option *ngFor = "let genre of genres">{{genre.name}}</option>
-                    </select>
+                    <!-- formControlName = "bookGenre" -->
+                    <!-- <select>
+                        <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
+                    </select> -->
 
                 </div>
 
-                <input class = "add-new-book" type="button" value="Add new book">
+                <input class = "add-new-book" type="button" value="Add new book" (click) = "addBook()">
 
-                <input class = "add-new-author" type="button" value="Add author">
+                <input class = "add-new-author" type="button"
+                        value="Add author" [disabled] = "formAddAuthor.invalid">
+
+                <pre> {{formAddAuthor.value | json}} </pre>
             </form>
         </div>
     </div>

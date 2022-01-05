@@ -26,10 +26,11 @@ export class AddAuthorComponent implements OnInit {
   }
 
   createFormElements() {
+    //original regexp: ^[a-zA-Z,.-` ]+$ - problems with numbers
     this.formAddAuthor = this.fb.group({
-      name : this.fb.control('', [Validators.pattern('^[a-zA-Z]+$'), Validators.required]),
-      surname : this.fb.control('', [Validators.pattern('^[a-zA-Z]+$'), Validators.required]),
-      patronymic : this.fb.control('', [Validators.pattern('^[a-zA-Z]+$'), Validators.required]),
+      name : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
+      surname : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
+      patronymic : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
       dateOfBirth : this.fb.control('', [Validators.required, 
         Validators.pattern(/^(([0][1-9])|([1-2][0-9])|([3][0-1]))\/(([0][1-9])|([1][0-2]))\/([0-9]{4})$/)]),
         // Input format: 16/03/1965
@@ -39,23 +40,13 @@ export class AddAuthorComponent implements OnInit {
 
   createBook() : FormGroup {
     return this.fb.group({
-      bookName: this.fb.control('', [Validators.required]),
+      //Validators.pattern('^[-a-zA-Z,.`?&*%#()<> ]+$')
+      bookName: this.fb.control('', [Validators.pattern('[^ ](.*)'), Validators.required]), //not allowed first char as whitespace, but then - everything you want 
       bookPagesNum: this.fb.control('', 
       [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]\d*$/)]),
       bookGenre: this.fb.control(this.genreValue, Validators.required)
     });
   }
-
-  // createBook_new() {
-  //   return new FormControl()
-  // }
-
-  // createBook() {
-  //   return new FormGroup({
-  //     bookName: new FormControl(),
-  //     bookPagesNum: new FormControl()
-  //   })
-  // }
 
   addBook() {
     //this.books = this.formAddAuthor.get('books') as FormArray;

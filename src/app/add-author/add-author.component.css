@@ -71,13 +71,13 @@ input[type='text'] {
     font-size: 16px;
 }
 
-input[type=button] {
-    font-family: AlatsiRegular;  
+input[type=button], input[type=submit] {
+    font-family: AlatsiRegular;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-input[type=button]:hover {
+input[type=button]:hover, input[type=submit]:hover {
     cursor: pointer;
 }
 
@@ -89,27 +89,34 @@ input[type=button].add-new-book {
     font-size: 18px;
 }
 
-input[type=button].add-new-book, input[type=button].add-new-author {
+input[type=button].add-new-book, input[type=submit].add-new-author {
     color: white;
     border: 1px solid #05509b;
     border-radius: 3px;
     transition: -ms-transform .3s, -webkit-transform .3s, transform .3s;
 }
 
-input[type=button].add-new-author {
+input[type=submit].add-new-author {
     background-color: #0A66C2;
     height: 45px;
     font-size: 20px;
     text-transform: uppercase;
 }
 
-input[type=button].add-new-author:hover, input[type=button].add-new-book:hover {
+input[type=submit].add-new-author:hover, input[type=button].add-new-book:hover {
     background-color: #08519b;
 }
 
-input[type=button].add-new-author:active, input[type=button].add-new-book:active {
-    
+input[type=submit].add-new-author:active, input[type=button].add-new-book:active {
+
     transform: scale(.90);
+}
+
+input[type=submit]:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none;
 }
 
 .delete-button {
@@ -141,7 +148,7 @@ input[type=button].add-new-author:active, input[type=button].add-new-book:active
 
 .book-pages-block select {
     font-family: ElegantTypewriter;
-} 
+}
 
 input[type=text].ng-invalid {
     border: 1px solid red;
@@ -162,7 +169,7 @@ input[type=text].ng-invalid {
     .center {
         width: 90%;
     }
-    
+
 }
 
 @media screen and (max-width: 666px) {

@@ -171,6 +171,12 @@ input[type=text].ng-invalid {
     border: 1px solid red;
 }
 
+.success-add-author {
+    background-color: rgb(207, 255, 152);
+    border-left: 5px solid green;
+    padding: 20px;
+}
+
 @media screen and (max-width: 1024px) {
     input[type=button].add-new-book {
         width: 50%;

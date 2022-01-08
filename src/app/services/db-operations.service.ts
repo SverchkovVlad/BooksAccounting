@@ -18,6 +18,15 @@ export class DbOperationsService {
     return this.http.delete(`http://localhost:3000/authors/${id}`);
   }
 
+  setAuthor(authorData: any) {
+    return this.http.post(`http://localhost:3000/authors/`, 
+      {name : authorData.name,
+       surname: authorData.surname,
+       patronymic: authorData.patronymic,
+       birthDate: authorData.birthDate,
+       books: authorData.books});
+  }
+
 
   /* Methods for genres */
 

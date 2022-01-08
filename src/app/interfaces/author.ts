@@ -1,4 +1,5 @@
 export interface Author {
+    [x: string]: any;
     id: number,
     name: string,
     surname: string,

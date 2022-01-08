@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Author } from '../interfaces/author';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
 
@@ -14,6 +15,7 @@ export class AddAuthorComponent implements OnInit {
   books: FormArray = new FormArray([]);
   genres: Genre[];
   genreValue: string;
+  authors : Author[];
 
   constructor(
     private dbOperationService: DbOperationsService,
@@ -31,7 +33,7 @@ export class AddAuthorComponent implements OnInit {
       name : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
       surname : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
       patronymic : this.fb.control('', [Validators.pattern('[^ ][a-zA-Z,.` -]+$'), Validators.required]),
-      dateOfBirth : this.fb.control('', [Validators.required, 
+      birthDate : this.fb.control('', [Validators.required, 
         Validators.pattern(/^(([0][1-9])|([1-2][0-9])|([3][0-1]))\/(([0][1-9])|([1][0-2]))\/([0-9]{4})$/)]),
         // Input format: 16/03/1965
       books: this.fb.array([this.createBook()])
@@ -55,6 +57,16 @@ export class AddAuthorComponent implements OnInit {
 
   deleteBook() {
     this.books.removeAt(this.books.length - 1);
+  }
+
+  submitData() {
+    //let data = JSON.stringify(this.formAddAuthor.value);
+    let data = this.formAddAuthor.value;
+    console.log(data);
+
+    this.dbOperationService.setAuthor(data).subscribe(item => {
+      this.authors.push(data);
+    })
   }
 
   ngOnInit(): void {

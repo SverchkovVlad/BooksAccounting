@@ -21,7 +21,7 @@
                     <option value="surname">Sort by surname</option>
                     <option value="patronymic">Sort by patronymic</option>
                     <option value="birthDate">Sort by date of birth</option>
-                    <option value="booksList">Sort by amount of books</option>
+                    <option value="books">Sort by amount of books</option>
                 </select>
             </div>
 
@@ -49,10 +49,10 @@
                 <td class="surname"> {{author.surname}}</td>
                 <td class="patronymic"> {{author.patronymic}}</td>
                 <td class="birthDate"> {{author.birthDate}}</td>
-                <td class="booksList">
+                <td class="books">
                     <div>
                         <ul>
-                            <li *ngFor="let book of author.booksList"><span>{{book}}</span></li>
+                            <li *ngFor="let book of author.books; let i = index"><span>{{book.bookName}}</span></li>
                         </ul>
                     </div>
 

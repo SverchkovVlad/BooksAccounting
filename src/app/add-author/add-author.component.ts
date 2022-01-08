@@ -44,7 +44,7 @@ export class AddAuthorComponent implements OnInit {
     return this.fb.group({
       //Validators.pattern('^[-a-zA-Z,.`?&*%#()<> ]+$')
       bookName: this.fb.control('', [Validators.pattern('[^ ](.*)'), Validators.required]), //not allowed first char as whitespace, but then - everything you want 
-      bookPagesNum: this.fb.control('', 
+      bookPagesNum: this.fb.control(1, 
       [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]\d*$/)]),
       bookGenre: this.fb.control(this.genreValue, Validators.required)
     });
@@ -62,9 +62,9 @@ export class AddAuthorComponent implements OnInit {
   submitData() {
     //let data = JSON.stringify(this.formAddAuthor.value);
     let data = this.formAddAuthor.value;
-    console.log(data);
+    data.bookPagesNum = +this.formAddAuthor.value.bookPagesNum; // converting numPages to number
 
-    this.dbOperationService.setAuthor(data).subscribe(item => {
+    this.dbOperationService.setAuthor(data).subscribe(() => {
       this.authors.push(data);
     })
   }

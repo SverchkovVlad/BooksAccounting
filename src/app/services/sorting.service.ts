@@ -27,8 +27,8 @@ export class SortingService {
         return firstEl < secondEl ? -1 : firstEl > secondEl ? 1 : 0;
       }
 
-      else if (key == "booksList") {
-        return secondObject.booksList.length - firstObject.booksList.length;
+      else if (key == "books") {
+        return secondObject.books.length - firstObject.books.length;
       }
 
       else {

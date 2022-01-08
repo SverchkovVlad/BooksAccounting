@@ -12,8 +12,8 @@ export class ItemSearchService {
   searchBook(authorsData : Author[], inputElement : string) {
     
     authorsData = authorsData.filter(author => {
-      return author.booksList.some(book => 
-        book.toLocaleLowerCase().match(inputElement.toLocaleLowerCase())) ? true : false;
+      return author.books.some(book => 
+        book.bookName.toLocaleLowerCase().match(inputElement.toLocaleLowerCase())) ? true : false;
     });
 
     return authorsData;

@@ -18,7 +18,7 @@ export class DbOperationsService {
     return this.http.delete(`http://localhost:3000/authors/${id}`);
   }
 
-  setAuthor(authorData: any) {
+  setAuthor(authorData: Author) {
     return this.http.post(`http://localhost:3000/authors/`, 
       {name : authorData.name,
        surname: authorData.surname,

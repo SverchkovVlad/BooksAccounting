@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
 import { ShowMessageService } from '../services/show-message.service';
+import { SortingService } from '../services/sorting.service';
 
 @Component({
   selector: 'app-genres',
@@ -18,7 +19,8 @@ export class GenresComponent implements OnInit {
   constructor(
     private dbOperationsService: DbOperationsService,
     private fBuilder: FormBuilder,
-    private showMessageService: ShowMessageService) { }
+    private showMessageService: ShowMessageService,
+    private sortService : SortingService) { }
 
   addGenre(inputText: string) {
     if (inputText) {
@@ -70,6 +72,10 @@ export class GenresComponent implements OnInit {
   clearInputField() {
     let input = document.querySelector('.main-input') as HTMLInputElement;
     if (input) input.value = "";
+  }
+
+  sortGenres() {
+    this.sortService.sortGenres(this.genres);
   }
 
   ngOnInit(): void {

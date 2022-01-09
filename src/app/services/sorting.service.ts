@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { first } from 'rxjs';
 import { Author } from '../interfaces/author';
+import { Genre } from '../interfaces/genre';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,12 @@ export class SortingService {
       
       }
 
+    });
+  }
+
+  sortGenres(genres: Genre[]) {
+    return genres.sort(function(firstObject, secondObject) {
+      return firstObject.name > secondObject.name ? 1 : firstObject.name < secondObject.name ? -1 : 0;
     });
   }
 

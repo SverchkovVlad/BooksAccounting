@@ -64,11 +64,20 @@ button, input[type=button] {
     margin-bottom: 50px;
 }
 
-.add-edit-btnDiv input[type=button] {
+.add-edit-btnDiv input[type=button], input[type=button].sort-btn {
     text-transform: uppercase;
     position: relative;
     border: 2px solid black;
     font-size: 14px;
+}
+
+input[type=button].sort-btn {
+    height: 40px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    background-color: rgb(158, 216, 243);
 }
 
 .genre-card {
@@ -96,11 +105,19 @@ button, input[type=button] {
     height: 30px;
 }
 
-.genre-card button:hover, .add-edit-btnDiv input[type=button]:enabled:hover {
+.genre-card button:hover, 
+.add-edit-btnDiv input[type=button]:enabled:hover,
+input[type=button].sort-btn:hover {
     cursor: pointer;
 }
 
-.genre-card button:active, .add-edit-btnDiv input[type=button]:enabled:active {
+input[type=button].sort-btn:hover {
+    background-color: rgb(64, 165, 212);
+}
+
+.genre-card button:active, 
+.add-edit-btnDiv input[type=button]:enabled:active,
+input[type=button].sort-btn:active  {
     top: 3px;
     left: 3px;
 }

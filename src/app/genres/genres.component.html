@@ -40,6 +40,9 @@
                     >
 
                 </div>
+
+                <input (click) = "sortGenres()" class="sort-btn" type = "button" value = "Sort by alphabet">
+
             </form>
 
             <div class="genre-card" *ngFor="let genre of genres">

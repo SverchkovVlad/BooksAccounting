@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Author } from 'src/app/interfaces/author';
 import { DbOperationsService } from 'src/app/services/db-operations.service';
 import { ItemSearchService } from 'src/app/services/item-search.service';
@@ -14,11 +15,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   authors : Author[];
   searchBookName : string;
   pseudoAuthors : Author[];
+  authorId: number;
 
   constructor(
     private dbOperationsService : DbOperationsService, 
     private sortingService : SortingService,
-    private itemSearchService : ItemSearchService) { }
+    private itemSearchService : ItemSearchService,
+    private router : Router) { }
 
 
   selectOptionHandler(selectedOptionEvent : Event) {
@@ -57,6 +60,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       if (errorElement) errorElement.style.display = "none";
     }
     
+  }
+
+  authorIdHandler(id: any) {
+
+    this.router.navigate(['editAuthorData', id]);
+    
+    // выбрать конкретного автора на основании полученного id
+    // let specificAuthor = this.authors.find(author => author.id == id);
+    // if (specificAuthor) console.log(specificAuthor.id);
+
   }
 
   ngOnInit(): void {

@@ -58,7 +58,8 @@
 
                 </td>
                 <td>
-                    <button routerLink = "editAuthorData">Edit</button>
+                    <!-- <button routerLink = "editAuthorData" (click) = "authorIdHandler(author.id)">Edit</button> -->
+                    <button (click) = "authorIdHandler(author.id)">Edit</button>
                     <button (click)="deleteAuthor(author.id)">Delete</button>
                     <button>Details</button>
                 </td>

@@ -9,6 +9,8 @@ const routes: Routes = [
   {path: 'editGenres', loadChildren: () => import('./genres/routing-modules/edit-genres-routing.module')
       .then(mod => mod.EditGenresRoutingModule)},
   {path: 'editAuthorData', loadChildren: () => import('./edit-author-and-books/routing-modules/edit-author-data-routing.module')
+      .then(mod => mod.EditAuthorDataRoutingModule)},
+  {path: 'editAuthorData/:id-author', loadChildren: () => import('./edit-author-and-books/routing-modules/edit-author-data-routing.module')
       .then(mod => mod.EditAuthorDataRoutingModule)}
 ];
 

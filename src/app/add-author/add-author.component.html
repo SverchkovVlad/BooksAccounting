@@ -1,12 +1,14 @@
 <header>
-    <h3>Adding Author</h3>
+    <h3 *ngIf = "!isEditing">Adding Author</h3>
+    <h3 *ngIf = "isEditing" style = "color: green;">Editing Author</h3>
 </header>
 
 <main>
     <div class="center">
         <div class="main-section">
 
-            <h4>Fill the data below</h4>
+            <h4 *ngIf = "!isEditing">Fill the data below</h4>
+            <h4 *ngIf = "isEditing">Edit the data below</h4>
 
             <form 
                 #formVariable = "ngForm" 
@@ -30,10 +32,10 @@
 
                     <div class = "book-pages-block" [formGroupName] = "i">
 
-                        <label for="book">Add book: </label>
+                        <label for="book">Book: </label>
                         <input formControlName = "bookName" type="text" id="book" placeholder="Name of the book..">
     
-                        <label for="pages">Add pages: </label>
+                        <label for="pages">Number of pages: </label>
                         <input formControlName = "bookPagesNum" type="text" id="pages" placeholder="Number of book`s pages..">
     
                         <p>Genre of the book</p>
@@ -52,8 +54,11 @@
 
                 <input class = "add-new-book" type="button" value="Add new book" (click) = "addBook()">
 
-                <input [disabled] = "formAddAuthor.invalid" class = "add-new-author" type="submit"
+                <input *ngIf = "!isEditing" [disabled] = "formAddAuthor.invalid" class = "add-new-author" type="submit"
                         value="Add author" >
+
+                <input *ngIf = "isEditing" [disabled] = "formAddAuthor.invalid" class = "save-changes" type="submit"
+                        value="Save changes" >
 
                 <div class="blank" style = "display: none;">
                     New author has been successfully added!

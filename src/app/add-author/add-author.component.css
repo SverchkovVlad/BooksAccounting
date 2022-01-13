@@ -89,25 +89,43 @@ input[type=button].add-new-book {
     font-size: 18px;
 }
 
-input[type=button].add-new-book, input[type=submit].add-new-author {
+input[type=button].add-new-book, 
+input[type=submit].add-new-author {
     color: white;
     border: 1px solid #05509b;
     border-radius: 3px;
     transition: -ms-transform .3s, -webkit-transform .3s, transform .3s;
 }
 
-input[type=submit].add-new-author {
-    background-color: #0A66C2;
+input[type=submit].add-new-author, input[type=submit].save-changes {
     height: 45px;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+input[type=submit].add-new-author {
+    background-color: #0A66C2;
+}
+
+input[type=submit].save-changes {
+    background-color: green;
+    color: white;
+    border: 1px solid #055a05;
+    border-radius: 3px;
+    transition: -ms-transform .3s, -webkit-transform .3s, transform .3s;
+}
+
+input[type=submit].save-changes:hover {
+    background-color: #055a05;
 }
 
 input[type=submit].add-new-author:hover, input[type=button].add-new-book:hover {
     background-color: #08519b;
 }
 
-input[type=submit].add-new-author:active, input[type=button].add-new-book:active {
+input[type=submit].add-new-author:active, 
+input[type=button].add-new-book:active,
+input[type=submit].save-changes:active {
 
     transform: scale(.90);
 }

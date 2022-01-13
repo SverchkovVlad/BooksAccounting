@@ -64,7 +64,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   authorIdHandler(id: any) {
 
-    this.router.navigate(['editAuthorData', id]);
+    //this.router.navigate(['editAuthorData', id]);
+    this.router.navigate(['addAuthor', id]);
     
     // выбрать конкретного автора на основании полученного id
     // let specificAuthor = this.authors.find(author => author.id == id);

@@ -73,9 +73,9 @@ export class AddAuthorComponent implements OnInit {
 
   submitData(form: FormGroup) {
 
-    if (form.valid && form.status == "VALID") {
+    let authorsData = form.value;
 
-      let authorsData = form.value;
+    if (form.valid && form.status == "VALID" && !this.isEditing) {
 
       for (let element of authorsData.books) {
         element.bookPagesNum = +element.bookPagesNum; // converting numPages to number
@@ -86,6 +86,17 @@ export class AddAuthorComponent implements OnInit {
       });
 
       this.showMessageService.showInfo('success-add-author', '', '');
+
+    }
+
+    else if (form.valid && form.status == "VALID" && this.isEditing) {
+
+      for (let element of authorsData.books) {
+        element.bookPagesNum = +element.bookPagesNum; // converting numPages to number
+      }
+
+      this.dbOperationService.editAuthor(authorsData, this.specificAuthorID).subscribe();
+      this.showMessageService.showInfo('success-add-author', '', 'edit-author');
 
     }
 

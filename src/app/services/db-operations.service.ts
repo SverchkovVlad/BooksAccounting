@@ -27,6 +27,10 @@ export class DbOperationsService {
        books: authorData.books});
   }
 
+  editAuthor(author: Author, authorID : number) {
+    return this.http.put(`http://localhost:3000/authors/${authorID}`, author);
+  }
+
 
   /* Methods for genres */
 

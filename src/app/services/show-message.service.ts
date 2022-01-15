@@ -24,6 +24,9 @@ export class ShowMessageService {
       case 'error-empty':
         element.innerHTML = "Input field cannot be empty!";
         break;
+      case 'edit-author':
+        element.innerHTML = "The author has been successfully edited!";
+        break;
     }
     
     element.style.display = "block";

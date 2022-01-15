@@ -32,10 +32,10 @@
 
                     <div class = "book-pages-block" [formGroupName] = "i">
 
-                        <label for="book">Book: </label>
+                        <label for="book">Book:</label>
                         <input formControlName = "bookName" type="text" id="book" placeholder="Name of the book..">
     
-                        <label for="pages">Number of pages: </label>
+                        <label for="pages">Number of pages:</label>
                         <input formControlName = "bookPagesNum" type="text" id="pages" placeholder="Number of book`s pages..">
     
                         <p>Genre of the book</p>
@@ -44,6 +44,11 @@
                             <option hidden>Select genre...</option>
                             <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
                         </select>
+
+                        <!-- <div *ngIf = "specificAuthor">
+                            {{specificAuthor!.books[i].bookGenre}}
+                        </div> -->
+                        
 
                         <input *ngIf = "i != 0"
                             (click) = "deleteBook()" class = "delete-button" type="button" id="pages" value = "Delete">
@@ -66,6 +71,7 @@
 
                 <!-- <pre> {{formAddAuthor.value | json}} </pre> -->
             </form>
+
         </div>
     </div>
 </main>

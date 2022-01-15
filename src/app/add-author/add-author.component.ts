@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormArrayName, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Author } from '../interfaces/author';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
@@ -20,13 +21,13 @@ export class AddAuthorComponent implements OnInit {
   authors: Author[];
   specificAuthorID: number;
   specificAuthor: Author | undefined;
-  isEditing : boolean = false;
+  isEditing: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private dbOperationService: DbOperationsService,
     private fb: FormBuilder,
-    private showMessageService: ShowMessageService) {}
+    private showMessageService: ShowMessageService) { }
 
   getGenres() {
     this.dbOperationService.getGenres().subscribe(genre => {
@@ -93,7 +94,7 @@ export class AddAuthorComponent implements OnInit {
     }
   }
 
-  editingConfigurationForm(idAuthor: number) {
+  editingConfigurationForm(idAuthor: number): void {
     //let idAuthor: number = 0;
     //this.activatedRoute.params.forEach(param => idAuthor = param['id-author']);
     //idAuthor = this.activatedRoute.snapshot.paramMap.get('id-author');
@@ -109,7 +110,8 @@ export class AddAuthorComponent implements OnInit {
 
   }
 
-  fillForm_authorsData(author: Author) {
+
+  fillForm_authorsData(author: Author): void {
 
     this.formAddAuthor.patchValue({
       name: author.name,
@@ -120,30 +122,26 @@ export class AddAuthorComponent implements OnInit {
 
     author.books.forEach((element, index, array) => {
       if (index === array.length - 1) return;
-      else 
-      this.addBook();
+      else {
+        this.addBook();
+      }
+
     });
 
-    let booksArr = <FormArray>this.formAddAuthor.controls['books'];
+    setTimeout(this.fillAuthorBooks, 0, this.specificAuthor, this.books, this.formAddAuthor);
+    //this.fillAuthorBooks(this.specificAuthor!, this.books, this.formAddAuthor);
 
-    console.log('booksArr length is ' + booksArr.length);
+  }
 
-    for (let i = 0; i < booksArr.length; i++) {
-      
-      booksArr.controls[i].patchValue({
-        bookName: author.books[i].bookName, 
+  fillAuthorBooks(author: Author, books: FormArray, formAddAuthor: FormGroup) {
+
+    for (let i = 0; i < books.length; i++) { //booksFormArray
+      books.controls[i].patchValue({ //booksFormArray
+        bookName: author.books[i].bookName,
         bookPagesNum: author.books[i].bookPagesNum,
         bookGenre: author.books[i].bookGenre
       });
-
-      console.log(author.books[i].bookGenre);
     }
-
-    // console.log('this.books.length is ' + this.books.length);
-
-    // this.books.removeAt(this.books.length - 1);
-
-    // console.log('this.books.length is ' + this.books.length);
 
   }
 
@@ -153,7 +151,8 @@ export class AddAuthorComponent implements OnInit {
     //this.books = this.formAddAuthor.get('books') as FormArray;
 
     this.createFormElements();
-    this.books = this.formAddAuthor.get('books') as FormArray;
+
+    this.books = <FormArray>this.formAddAuthor.get('books');
 
     if (this.activatedRoute.snapshot.paramMap.get('id-author')) {
       this.isEditing = true;
@@ -161,5 +160,7 @@ export class AddAuthorComponent implements OnInit {
       //this.activatedRoute.params.forEach(param => this.specificAuthorID = param['id-author']);
       this.editingConfigurationForm(this.specificAuthorID);
     }
+
   }
+
 }

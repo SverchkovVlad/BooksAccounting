@@ -67,8 +67,8 @@ export class AddAuthorComponent implements OnInit {
     this.books.push(this.createBook());
   }
 
-  deleteBook() {
-    this.books.removeAt(this.books.length - 1);
+  deleteBook(index : number) {
+    this.books.removeAt(index);
   }
 
   submitData(form: FormGroup) {
@@ -128,12 +128,12 @@ export class AddAuthorComponent implements OnInit {
 
     });
 
-    setTimeout(this.fillAuthorBooks, 0, this.specificAuthor, this.books, this.formAddAuthor);
+    setTimeout(this.fillAuthorBooks, 0, this.specificAuthor, this.books);
     //this.fillAuthorBooks(this.specificAuthor!, this.books, this.formAddAuthor);
 
   }
 
-  fillAuthorBooks(author: Author, books: FormArray, formAddAuthor: FormGroup) {
+  fillAuthorBooks(author: Author, books: FormArray) {
 
     for (let i = 0; i < books.length; i++) { //booksFormArray
       books.controls[i].patchValue({ //booksFormArray

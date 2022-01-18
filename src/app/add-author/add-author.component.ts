@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormArrayName, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
+
 import { Author } from '../interfaces/author';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
@@ -20,18 +21,23 @@ export class AddAuthorComponent implements OnInit {
   genreValue: string;
   authors: Author[];
   specificAuthorID: number;
-  specificAuthor: Author | undefined;
+  specificAuthor: Author;
   isEditing: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private dbOperationService: DbOperationsService,
     private fb: FormBuilder,
-    private showMessageService: ShowMessageService) { }
+    private showMessageService: ShowMessageService
+    ) { }
 
   getGenres() {
-    this.dbOperationService.getGenres().subscribe(genre => {
-      this.genres = <Genre[]>genre;
+    this.dbOperationService.getGenres().subscribe({
+      next: (genre) => this.genres = <Genre[]>genre,
+      error: (error) => {
+        console.log(error);
+        return this.showMessageService.showInfo('error-class', '', 'error-blank', undefined, 'Can`t load genres! Details in console')
+      }
     })
   }
 
@@ -67,7 +73,7 @@ export class AddAuthorComponent implements OnInit {
     this.books.push(this.createBook());
   }
 
-  deleteBook(index : number) {
+  deleteBook(index: number) {
     this.books.removeAt(index);
   }
 
@@ -85,7 +91,7 @@ export class AddAuthorComponent implements OnInit {
         this.authors.push(authorsData);
       });
 
-      this.showMessageService.showInfo('success-add-author', '', '');
+      this.showMessageService.showInfo('success-add-author-class', '', '');
 
     }
 
@@ -95,8 +101,15 @@ export class AddAuthorComponent implements OnInit {
         element.bookPagesNum = +element.bookPagesNum; // converting numPages to number
       }
 
-      this.dbOperationService.editAuthor(authorsData, this.specificAuthorID).subscribe();
-      this.showMessageService.showInfo('success-add-author', '', 'edit-author');
+      this.dbOperationService.editAuthor(authorsData, this.specificAuthorID).subscribe((response) => {
+
+        if (response.status == 200) {
+          this.showMessageService.showInfo('success-add-author-class', '', 'edit-author');
+        }
+        else {
+          this.showMessageService.showInfo('error-class', '', 'error-status-code', response.status);
+        }
+      });
 
     }
 
@@ -110,13 +123,12 @@ export class AddAuthorComponent implements OnInit {
     //this.activatedRoute.params.forEach(param => idAuthor = param['id-author']);
     //idAuthor = this.activatedRoute.snapshot.paramMap.get('id-author');
 
-    this.dbOperationService.getAuthors().subscribe(author => {
-      this.specificAuthor = (<Author[]>author).find(author => author.id == idAuthor);
+    this.dbOperationService.getAuthor(idAuthor).subscribe(author => {
+      this.specificAuthor = <Author>author; 
 
       if (this.specificAuthor) {
         this.fillForm_authorsData(this.specificAuthor);
       }
-
     });
 
   }
@@ -158,9 +170,6 @@ export class AddAuthorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGenres();
-    //this.createFormElements();
-    //this.books = this.formAddAuthor.get('books') as FormArray;
-
     this.createFormElements();
 
     this.books = <FormArray>this.formAddAuthor.get('books');
@@ -169,8 +178,26 @@ export class AddAuthorComponent implements OnInit {
       this.isEditing = true;
       this.specificAuthorID = +this.activatedRoute.snapshot.paramMap.get('id-author')!;
       //this.activatedRoute.params.forEach(param => this.specificAuthorID = param['id-author']);
+      
       this.editingConfigurationForm(this.specificAuthorID);
     }
+
+    // const token$ = this.dbOperationService.getToken().pipe(
+    //   map(x => {
+    //     console.log('(map) => : ', x);
+    //     return x;
+    //   }),
+    //   catchError(err => {
+    //     console.log('(catchError) : ', err);
+    //     return of(null);
+    //   })
+    // );
+
+    // token$.subscribe(
+    //   x => console.log('(subscribe) Token recd : ', x),
+    //   err => console.log('(subscribe) Error recd : ', err),
+    //   () => console.log('(subscribe) Completed!')
+    // );
 
   }
 

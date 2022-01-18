@@ -9,11 +9,7 @@ const routes: Routes = [
   {path: 'addAuthor/:id-author', loadChildren: () => import('./add-author/routing-modules/add-author-routing.module')
       .then(mod => mod.AddAuthorRoutingModule)},
   {path: 'editGenres', loadChildren: () => import('./genres/routing-modules/edit-genres-routing.module')
-      .then(mod => mod.EditGenresRoutingModule)},
-//   {path: 'editAuthorData', loadChildren: () => import('./edit-author-and-books/routing-modules/edit-author-data-routing.module')
-//       .then(mod => mod.EditAuthorDataRoutingModule)},
-  {path: 'editAuthorData/:id-author', loadChildren: () => import('./edit-author-and-books/routing-modules/edit-author-data-routing.module')
-      .then(mod => mod.EditAuthorDataRoutingModule)}
+      .then(mod => mod.EditGenresRoutingModule)}
 ];
 
 @NgModule({

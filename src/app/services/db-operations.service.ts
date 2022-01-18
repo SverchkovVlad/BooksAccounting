@@ -1,14 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, throwError } from 'rxjs';
+import { Observable, throwError as observableThrowError } from 'rxjs';
+
 import { Author } from '../interfaces/author';
 import { Genre } from '../interfaces/genre';
+import { ShowMessageService } from '../services/show-message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbOperationsService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private showMessageService : ShowMessageService) { }
 
   getAuthors() {
     return this.http.get('http://localhost:3000/authors');
@@ -28,7 +32,34 @@ export class DbOperationsService {
   }
 
   editAuthor(author: Author, authorID : number) {
-    return this.http.put(`http://localhost:3000/authors/${authorID}`, author);
+  
+    return this.http.put(`http://localhost:3000/authors/${authorID}`, author, {observe: 'response'})
+    .pipe(
+      catchError(this.handleError)
+    );
+      //catchError(this.handleError));
+  }
+
+  getAuthor(id: number) : Observable<Author | unknown>{
+    return this.getAuthors().pipe(
+      map(authors => (<Author[]>authors).find((author: Author) => author.id == id)),
+      catchError(error => {
+        console.log(error);
+        this.showMessageService.showInfo('error-class', '', 'error-blank', undefined, 'Can`t load requested author! Details in console');
+        return error;
+        
+      })
+    );
+  }
+
+  private handleError(res: HttpErrorResponse | any) {
+    //console.log('Server error!!!');
+    //return throwError(() => new Error('Server error'));
+    //console.error(res.error || res.body.error);
+    this.showMessageService.showInfo('error-class', '', 'error-blank', undefined, 'Can`t save changes to author! Details in console');
+    return throwError(() => new Error(res || 'Server error'));
+
+    //return observableThrowError(res.error || 'Server error');
   }
 
 

@@ -17,6 +17,7 @@
                 <!-- <select (change) = "selectOptionHandler($event.target)"> -->
                 <!-- <select class = "sort-method-selection"> -->
                 <select (change)="selectOptionHandler($event)">
+                    <option hidden>Sort by...</option>
                     <option value="name">Sort by name</option>
                     <option value="surname">Sort by surname</option>
                     <option value="patronymic">Sort by patronymic</option>

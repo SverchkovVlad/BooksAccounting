@@ -209,11 +209,18 @@ h1, h3 {
     transform: scale(.90);
 }
 
-.book-not-found {
+.book-not-found, .loading {
     text-align: center;
     font-size: 35px;
     width: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+.book-not-found {
     background-color: rgb(255, 199, 199);
+}
+
+.loading {
+    background-color: rgb(255, 249, 199);
 }

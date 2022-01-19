@@ -15,11 +15,15 @@ export class DbOperationsService {
   constructor(private http : HttpClient, private showMessageService : ShowMessageService) { }
 
   getAuthors() {
-    return this.http.get('http://localhost:3000/authors');
+    return this.http.get('http://localhost:3000/authors').pipe(
+      catchError(this.handleError)
+    )
   }
 
   deleteAuthor(id: number) {
-    return this.http.delete(`http://localhost:3000/authors/${id}`);
+    return this.http.delete(`http://localhost:3000/authors/${id}`).pipe(
+      catchError(this.handleError)
+    )
   }
 
   setAuthor(authorData: Author) {
@@ -53,10 +57,7 @@ export class DbOperationsService {
   }
 
   private handleError(res: HttpErrorResponse | any) {
-    //console.log('Server error!!!');
-    //return throwError(() => new Error('Server error'));
-    //console.error(res.error || res.body.error);
-    this.showMessageService.showInfo('error-class', '', 'error-blank', undefined, 'Can`t save changes to author! Details in console');
+    console.error(res.error || res.body.error);
     return throwError(() => new Error(res || 'Server error'));
 
     //return observableThrowError(res.error || 'Server error');
@@ -66,19 +67,27 @@ export class DbOperationsService {
   /* Methods for genres */
 
   setGenres(inputText : string) {
-    return this.http.post(`http://localhost:3000/genres`, {name : inputText});
+    return this.http.post(`http://localhost:3000/genres`, {name : inputText}).pipe(
+      catchError(this.handleError)
+    );
   }
 
   getGenres() {
-    return this.http.get('http://localhost:3000/genres');
+    return this.http.get('http://localhost:3000/genres').pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteGenre(id: number) {
-    return this.http.delete(`http://localhost:3000/genres/${id}`);
+    return this.http.delete(`http://localhost:3000/genres/${id}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   editGenre(genre: Genre) {
-    return this.http.put(`http://localhost:3000/genres/${genre.id}`, genre);
+    return this.http.put(`http://localhost:3000/genres/${genre.id}`, genre).pipe(
+      catchError(this.handleError)
+    );
   }
   
 }

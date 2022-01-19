@@ -182,23 +182,6 @@ export class AddAuthorComponent implements OnInit {
       this.editingConfigurationForm(this.specificAuthorID);
     }
 
-    // const token$ = this.dbOperationService.getToken().pipe(
-    //   map(x => {
-    //     console.log('(map) => : ', x);
-    //     return x;
-    //   }),
-    //   catchError(err => {
-    //     console.log('(catchError) : ', err);
-    //     return of(null);
-    //   })
-    // );
-
-    // token$.subscribe(
-    //   x => console.log('(subscribe) Token recd : ', x),
-    //   err => console.log('(subscribe) Error recd : ', err),
-    //   () => console.log('(subscribe) Completed!')
-    // );
-
   }
 
 }

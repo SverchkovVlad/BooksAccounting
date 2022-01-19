@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { map } from 'rxjs';
 import { Author } from 'src/app/interfaces/author';
 import { DbOperationsService } from 'src/app/services/db-operations.service';
 import { ItemSearchService } from 'src/app/services/item-search.service';
@@ -14,8 +15,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   authors : Author[];
   searchBookName : string;
+  tableVariable : any;
   pseudoAuthors : Author[];
   authorId: number;
+  isBookFound: boolean;
+  isTableEmpty: boolean;
 
   constructor(
     private dbOperationsService : DbOperationsService, 
@@ -33,33 +37,44 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
+      if (this.authors) {
+        this.isTableEmpty = false;
+      }
     })
   }
 
   deleteAuthor(id: number) {
     this.dbOperationsService.deleteAuthor(id).subscribe(item => {
       this.getAuthors();
-      console.log("Element has been deleted!");
     })
   }
 
   searchBook() {
 
-    let errorElement = document.querySelector('.book-not-found') as HTMLDivElement;
+    console.log(this.tableVariable);
 
     if (this.searchBookName != "") {
      this.authors = this.itemSearchService.searchBook(this.authors, this.searchBookName);
 
      if (this.authors.length == 0) {
-       if (errorElement) errorElement.style.display = "block";
+       this.isBookFound = true;
      }
      
     }
     else {
       this.ngOnInit();
-      if (errorElement) errorElement.style.display = "none";
+      this.isBookFound = false;
     }
     
+  }
+
+  checkTableEmptiness() {
+    let table = document.querySelector('table') as HTMLTableElement;
+
+    if (table.rows.length == 1 && !this.isTableEmpty) {
+      this.isTableEmpty = true;
+    }
+
   }
 
   authorIdHandler(id: any) {
@@ -75,6 +90,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAuthors();
+    this.checkTableEmptiness();
   }
 
   ngAfterViewInit(): void {

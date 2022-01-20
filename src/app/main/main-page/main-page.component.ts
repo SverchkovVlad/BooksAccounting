@@ -37,9 +37,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
-      if (this.authors) {
-        this.isTableEmpty = false;
-      }
+      
+      if (this.authors) this.isTableEmpty = false;
     })
   }
 

@@ -19,7 +19,7 @@ export class AddAuthorComponent implements OnInit {
   books: FormArray = new FormArray([]);
   genres: Genre[];
   genreValue: string;
-  authors: Author[];
+  //authors: Author[];
   specificAuthorID: number;
   specificAuthor: Author;
   isEditing: boolean = false;
@@ -87,11 +87,20 @@ export class AddAuthorComponent implements OnInit {
         element.bookPagesNum = +element.bookPagesNum; // converting numPages to number
       }
 
-      this.dbOperationService.setAuthor(authorsData).subscribe(() => {
-        this.authors.push(authorsData);
+      this.dbOperationService.setAuthor(authorsData).subscribe((response) => {
+
+        if (response.status == 201) {
+          this.showMessageService.showInfo('success-add-author-class', '', 'add-author');
+        }
+        else {
+          this.showMessageService.showInfo('error-class', '', 'error-status-code', response.status);
+        }
+
+        //this.authors.push(authorsData);
+        
       });
 
-      this.showMessageService.showInfo('success-add-author-class', '', '');
+      //this.showMessageService.showInfo('success-add-author-class', '', '');
 
     }
 

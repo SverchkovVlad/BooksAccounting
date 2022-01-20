@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Genre } from '../interfaces/genre';
@@ -14,23 +15,31 @@ export class GenresComponent implements OnInit {
 
   formGenresGroup: FormGroup = new FormGroup({});
   genres: Genre[];
-  selectedGenre : Genre;
+  selectedGenre: Genre;
 
   constructor(
     private dbOperationsService: DbOperationsService,
     private fBuilder: FormBuilder,
     private showMessageService: ShowMessageService,
-    private sortService : SortingService) { }
+    private sortService: SortingService) { }
 
   addGenre(inputText: string) {
     if (inputText) {
-      this.dbOperationsService.setGenres(inputText).subscribe(genre => {
+
+      let genresFirstLength = this.genres.length;
+
+      this.dbOperationsService.setGenre(inputText).subscribe((genre) => {
         this.genres.push(<Genre>genre);
+
+        if (genresFirstLength < this.genres.length) {
+          this.clearInputField();
+          this.showMessageService.showInfo('info', inputText, 'add');
+        }
+
       });
 
-      this.clearInputField();
-      this.showMessageService.showInfo('info', inputText, 'add');
     }
+    
     else {
       this.showMessageService.showInfo('main-input-error', '', 'error-empty');
     }
@@ -48,19 +57,23 @@ export class GenresComponent implements OnInit {
     input.value = genre.name;
   }
 
-  finishEditGenre(newName : string) {
+  finishEditGenre(newName: string) {
 
     if (newName) {
       this.selectedGenre.name = newName;
 
-      this.dbOperationsService.editGenre(this.selectedGenre).subscribe();
-      this.clearInputField();
-      this.showMessageService.showInfo('info', newName, 'edit');
+      this.dbOperationsService.editGenre(this.selectedGenre).subscribe(response => {
+        if (response.status == 200) {
+          this.showMessageService.showInfo('info', newName, 'edit');
+          this.clearInputField();
+        }
+      });
+
     }
     else {
       this.showMessageService.showInfo('main-input-error', '', 'error-empty');
     }
-   
+
   }
 
   deleteGenre(id: number) {

@@ -32,7 +32,7 @@ export class DbOperationsService {
        surname: authorData.surname,
        patronymic: authorData.patronymic,
        birthDate: authorData.birthDate,
-       books: authorData.books});
+       books: authorData.books}, {observe: 'response'});
   }
 
   editAuthor(author: Author, authorID : number) {
@@ -66,7 +66,7 @@ export class DbOperationsService {
 
   /* Methods for genres */
 
-  setGenres(inputText : string) {
+  setGenre(inputText : string) {
     return this.http.post(`http://localhost:3000/genres`, {name : inputText}).pipe(
       catchError(this.handleError)
     );
@@ -85,7 +85,7 @@ export class DbOperationsService {
   }
 
   editGenre(genre: Genre) {
-    return this.http.put(`http://localhost:3000/genres/${genre.id}`, genre).pipe(
+    return this.http.put(`http://localhost:3000/genres/${genre.id}`, genre, {observe: 'response'}).pipe(
       catchError(this.handleError)
     );
   }

@@ -45,11 +45,15 @@
 
             </form>
 
-            <div class="genre-card" *ngFor="let genre of genres">
+            <div class="genre-card" *ngFor="let genre of genres" id = '{{genre.id}}'>
                 <span>{{genre.name}}</span>
 
                 <button (click) = "startEditGenre(genre, genreInputField)">Edit</button>
-                <button (click) = "deleteGenre(genre.id)">Delete</button>
+                <!-- <button (click) = "deleteGenre(genre.id)">Delete</button> -->
+                <button (click) = "checkGenreUsing(genre.name, genre.id)">Delete</button>
+                <div *ngIf = "genreID == genre.id" id='{{genre.id}}' class = "error-delete">
+                    You cannot delete this genre, as it is already linked to one or more books!
+                </div>
             </div>
 
         </div>

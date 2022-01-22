@@ -1,6 +1,7 @@
-import { HttpResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs';
+import { Author } from '../interfaces/author';
 import { Genre } from '../interfaces/genre';
 import { DbOperationsService } from '../services/db-operations.service';
 import { ShowMessageService } from '../services/show-message.service';
@@ -16,6 +17,8 @@ export class GenresComponent implements OnInit {
   formGenresGroup: FormGroup = new FormGroup({});
   genres: Genre[];
   selectedGenre: Genre;
+  authors: Author[];
+  genreID: number;
 
   constructor(
     private dbOperationsService: DbOperationsService,
@@ -39,7 +42,7 @@ export class GenresComponent implements OnInit {
       });
 
     }
-    
+
     else {
       this.showMessageService.showInfo('main-input-error', '', 'error-empty');
     }
@@ -77,9 +80,39 @@ export class GenresComponent implements OnInit {
   }
 
   deleteGenre(id: number) {
-    this.dbOperationsService.deleteGenre(id).subscribe(item => {
+
+    this.dbOperationsService.deleteGenre(id).subscribe(() => {
       this.getGenres();
     })
+  }
+
+  checkGenreUsing(genreName: string, genreId: number) {
+
+    this.dbOperationsService.getAuthors().pipe(
+      map(authors => (<Author[]>authors).find((author: Author) => {
+        return author.books.find((genre: Author['books'][0]) => genre.bookGenre == genreName);
+      }))
+    ).subscribe(authorWithSpecifiedGenre => {
+
+      if (authorWithSpecifiedGenre) {
+
+        let element = document.querySelector('[id=' + CSS.escape(genreId.toString()) + ']');
+
+        if (element) {
+  
+          this.genreID = genreId;
+          setTimeout(() => {
+            this.genreID = 0;
+          }, 4000);
+
+        }
+        
+      }
+      else 
+        this.deleteGenre(genreId);
+
+    });
+
   }
 
   clearInputField() {

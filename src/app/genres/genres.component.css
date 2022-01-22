@@ -146,6 +146,15 @@ input[type=text].ng-invalid {
     padding: 20px;
 }
 
+.error-delete {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    grid-column: 1 / -1;
+}
+
 @media screen and (max-width: 1024px) {
 
     .center {

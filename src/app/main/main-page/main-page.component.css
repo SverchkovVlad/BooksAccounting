@@ -51,6 +51,82 @@ h1, h3 {
     font-family: Amperzand, Arial, Helvetica, sans-serif;
 }
 
+.modal-wrapper {
+    display: none;
+}
+
+.modal-window {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* z-index must be higher than .jw-modal-background */
+    z-index: 1000;
+    
+    /* enables scrolling for tall modals */
+    overflow: auto;
+}
+
+.modal-window-body {
+    padding: 20px;
+    background: #fff;
+
+    /* margin exposes part of the modal background */
+    margin: 40px auto;
+    width: 80%;
+}
+
+.modal-window-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.75;
+    z-index: 900;
+}
+
+.modal-author-fullname {
+    text-align: center;
+    font-size: 28px;
+}
+
+.modal-date-of-birth {
+    text-align: center;
+    font-size: 24px;
+}
+
+.modal-table {
+    margin: 45px auto 0px auto;
+    width: 80%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.modal-table td, .modal-table th {
+    border: 1px solid black;
+}
+
+.modal-table {
+    font-family: "Open Sans", sans-serif;
+}
+
+.modal-table th {
+    padding: 10px;
+    background-color: #0A66C2;
+    color: white;
+}
+
+.modal-table td {     
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .books-container {
     color: black;
     height: auto;

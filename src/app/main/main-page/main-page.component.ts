@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -13,22 +14,25 @@ import { SortingService } from 'src/app/services/sorting.service';
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
 
-  authors : Author[];
-  searchBookName : string;
-  tableVariable : any;
-  pseudoAuthors : Author[];
+  authors: Author[];
+  searchBookName: string;
+  tableVariable: any;
+  pseudoAuthors: Author[];
   authorId: number;
   isBookFound: boolean;
   isTableEmpty: boolean;
+  tableAuthor: Author;
+  trBooks: Author['books'];
 
   constructor(
-    private dbOperationsService : DbOperationsService, 
-    private sortingService : SortingService,
-    private itemSearchService : ItemSearchService,
-    private router : Router) { }
+    private dbOperationsService: DbOperationsService,
+    private sortingService: SortingService,
+    private itemSearchService: ItemSearchService,
+    private router: Router,
+    private datePipe : DatePipe) { }
 
 
-  selectOptionHandler(selectedOptionEvent : Event) {
+  selectOptionHandler(selectedOptionEvent: Event) {
     let e = <HTMLOptionElement>selectedOptionEvent.target;
 
     this.sortingService.sort(this.authors, e.value as keyof Author);
@@ -37,7 +41,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   getAuthors() {
     this.dbOperationsService.getAuthors().subscribe(item => {
       this.authors = <Author[]>item;
-      
+
       if (this.authors) this.isTableEmpty = false;
     })
   }
@@ -53,18 +57,18 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     console.log(this.tableVariable);
 
     if (this.searchBookName != "") {
-     this.authors = this.itemSearchService.searchBook(this.authors, this.searchBookName);
+      this.authors = this.itemSearchService.searchBook(this.authors, this.searchBookName);
 
-     if (this.authors.length == 0) {
-       this.isBookFound = true;
-     }
-     
+      if (this.authors.length == 0) {
+        this.isBookFound = true;
+      }
+
     }
     else {
       this.ngOnInit();
       this.isBookFound = false;
     }
-    
+
   }
 
   checkTableEmptiness() {
@@ -77,14 +81,43 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   authorIdHandler(id: any) {
-
-    //this.router.navigate(['editAuthorData', id]);
     this.router.navigate(['addAuthor', id]);
-    
-    // выбрать конкретного автора на основании полученного id
-    // let specificAuthor = this.authors.find(author => author.id == id);
-    // if (specificAuthor) console.log(specificAuthor.id);
+  }
 
+  openModalWindow(authorID: number) {
+    document.body.style.overflow = "hidden";
+
+    let elementModal = document.querySelector('.modal-wrapper') as HTMLDivElement;
+    elementModal.style.display = "block";
+
+    this.dbOperationsService.getAuthor(authorID).subscribe((data) => {
+      let author = <Author>data;
+
+      if (author) {
+
+        this.convertDate(author.birthDate);
+
+        this.tableAuthor = author;
+        this.trBooks = author.books;
+      }
+
+    })
+  }
+
+  convertDate(date: Date) {
+    let paragraphDate = document.querySelector('.modal-date-of-birth');
+
+    let inputDate = date.toString().split('/');
+    let newDate = [inputDate[1], inputDate[0], inputDate[2]].join('/');
+
+    if (paragraphDate) paragraphDate.innerHTML = <string>this.datePipe.transform(newDate, 'longDate');
+  }
+
+  closeModalWindow() {
+    document.body.style.overflow = "auto";
+
+    let elementModal = document.querySelector('.modal-wrapper') as HTMLDivElement;
+    elementModal.style.display = "none";
   }
 
   ngOnInit(): void {
@@ -94,6 +127,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     //for manipulations with @ViewChild and @ViewChildren after View initializing is completed
-    
+
   }
 }

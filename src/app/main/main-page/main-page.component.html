@@ -8,10 +8,49 @@
 </section>
 
 <section class="books-container">
+
+    <div class="modal-wrapper">
+
+        <div class="modal-window">
+            <div class="modal-window-body">
+
+                <h4 class="modal-author-fullname" *ngIf = "tableAuthor">
+                    {{tableAuthor.surname}} {{tableAuthor.name}} {{tableAuthor.patronymic}}
+                </h4>
+
+                <p class="modal-date-of-birth">
+                    
+                </p>
+
+                <table class = "modal-table">
+
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Num of Pages</th>
+                    </tr>
+
+                    <tr class="modal-tr-books" *ngFor = "let book of trBooks">
+                        <td>{{book.bookName}}</td>
+                        <td>{{book.bookGenre}}</td>
+                        <td>{{book.bookPagesNum}}</td>
+                    </tr>
+
+                </table>
+
+                <button (click)="closeModalWindow()">Close</button>
+
+            </div>
+        </div>
+
+        <div class="modal-window-background"></div>
+
+    </div>
+
     <div class="center">
         <h3>List of our authors & books</h3>
 
-        <div class = "sort-search-wrap">
+        <div class="sort-search-wrap">
 
             <div class="list-sorting">
                 <!-- <select (change) = "selectOptionHandler($event.target)"> -->
@@ -27,8 +66,8 @@
             </div>
 
             <label for="searchField">
-                Type book`s name: <input [(ngModel)] = "searchBookName" 
-                type="search" name="searchField" id="searchField" (input) = "searchBook()">
+                Type book`s name: <input [(ngModel)]="searchBookName" type="search" name="searchField" id="searchField"
+                    (input)="searchBook()">
             </label>
 
         </div>
@@ -60,25 +99,26 @@
                 </td>
                 <td>
                     <!-- <button routerLink = "editAuthorData" (click) = "authorIdHandler(author.id)">Edit</button> -->
-                    <button (click) = "authorIdHandler(author.id)">Edit</button>
+                    <button (click)="authorIdHandler(author.id)">Edit</button>
                     <button (click)="deleteAuthor(author.id)">Delete</button>
-                    <button>Details</button>
+                    <button (click)="openModalWindow(author.id)">Details</button>
                 </td>
 
             </tr>
         </table>
 
-        <div *ngIf = "isBookFound" class = "book-not-found">Not found!</div>
-        <div *ngIf = "isTableEmpty" class = "loading">Authors and books are loading...</div>
+        <div *ngIf="isBookFound" class="book-not-found">Not found!</div>
+        <div *ngIf="isTableEmpty" class="loading">Authors and books are loading...</div>
 
         <div class="a-buttons">
             <!-- <a routerLink = "addAuthor">Add new author</a>
             <a routerLink = "editGenres">Edit genres</a> -->
-            <a routerLink = "addAuthor">Add new author</a>
-            <a routerLink = "editGenres">Edit genres</a>
+            <a routerLink="addAuthor">Add new author</a>
+            <a routerLink="editGenres">Edit genres</a>
         </div>
 
     </div>
 </section>
+
 
 <footer></footer>

@@ -11,16 +11,14 @@
 
     <div class="modal-wrapper">
 
-        <div class="modal-window">
+        <div (click)="toggle($event)" class="modal-window">
             <div class="modal-window-body">
 
                 <h4 class="modal-author-fullname" *ngIf = "tableAuthor">
                     {{tableAuthor.surname}} {{tableAuthor.name}} {{tableAuthor.patronymic}}
                 </h4>
 
-                <p class="modal-date-of-birth">
-                    
-                </p>
+                <p class="modal-date-of-birth"></p>
 
                 <table class = "modal-table">
 
@@ -38,7 +36,7 @@
 
                 </table>
 
-                <button (click)="closeModalWindow()">Close</button>
+                <button class = 'modal-close'(click)="closeModalWindow()">Close</button>
 
             </div>
         </div>

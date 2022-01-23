@@ -79,6 +79,24 @@ h1, h3 {
     width: 80%;
 }
 
+button.modal-close {
+    font-family: AlatsiRegular;
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin: 40px auto 20px auto;
+    border: 1px solid #0A66C2;
+    background-color: #05509b;
+    border-radius: 3px;
+    width: 60%;
+    height: 38px;
+}
+
+button.modal-close:hover {
+    cursor: pointer;
+    background-color: #03396e;
+}
+
 .modal-window-background {
     position: fixed;
     top: 0;

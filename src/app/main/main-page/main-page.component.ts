@@ -110,7 +110,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     let inputDate = date.toString().split('/');
     let newDate = [inputDate[1], inputDate[0], inputDate[2]].join('/');
 
-    if (paragraphDate) paragraphDate.innerHTML = <string>this.datePipe.transform(newDate, 'longDate');
+    if (paragraphDate) paragraphDate.innerHTML = 'Date of birth: ' + <string>this.datePipe.transform(newDate, 'longDate');
   }
 
   closeModalWindow() {
@@ -120,9 +120,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     elementModal.style.display = "none";
   }
 
+  toggle(event : any) {
+    if (event.target.className === 'modal-window') {
+      this.closeModalWindow();
+    }
+  }
+
   ngOnInit(): void {
     this.getAuthors();
     this.checkTableEmptiness();
+
   }
 
   ngAfterViewInit(): void {

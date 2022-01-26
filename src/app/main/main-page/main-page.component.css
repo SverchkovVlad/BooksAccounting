@@ -325,6 +325,28 @@ button.modal-close:hover {
     background-color: rgb(255, 249, 199);
 }
 
+footer {
+    background-color: #16437E;
+    height: 80px;
+    font-family: AlatsiRegular, Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer a, footer a:visited {
+    color: white;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color:rgb(238, 216, 14);
+}
+
 @media screen and (max-width: 1024px) {
 
     .center {
@@ -435,6 +457,15 @@ button.modal-close:hover {
         box-shadow: none;
     }
 
+    .a-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .a-buttons a {
+        width: 80%;
+    }
+
 }
 
 @media screen and (max-width: 600px) { 
@@ -496,15 +527,6 @@ button.modal-close:hover {
 
     .books-container h3 {
         font-size: 30px;
-    }
-
-    .a-buttons {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-    .a-buttons a {
-        width: 80%;
     }
 
 }

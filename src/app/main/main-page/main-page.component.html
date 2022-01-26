@@ -1,6 +1,6 @@
 <section class="intro-wrap">
 
-    <div class="center intro-text">
+    <div class="center intro-text up-down-border">
         <h1>V.S. Library</h1>
         <span class="quote">Today`s knowledge, tommorow`s power</span>
     </div>
@@ -74,35 +74,39 @@
         <!-- https://www.w3schools.com/css/css_table.asp -->
 
         <table class="authors-table">
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Patronymic</th>
-                <th>Date of birth</th>
-                <th>Books</th>
-                <th>Options</th>
-            </tr>
-            <tr class="author-data" *ngFor="let author of authors">
-                <td class="name"> {{author.name}}</td>
-                <td class="surname"> {{author.surname}}</td>
-                <td class="patronymic"> {{author.patronymic}}</td>
-                <td class="birthDate"> {{author.birthDate}}</td>
-                <td class="books">
-                    <div>
-                        <ul>
-                            <li *ngFor="let book of author.books; let i = index"><span>{{book.bookName}}</span></li>
-                        </ul>
-                    </div>
-
-                </td>
-                <td>
-                    <!-- <button routerLink = "editAuthorData" (click) = "authorIdHandler(author.id)">Edit</button> -->
-                    <button (click)="authorIdHandler(author.id)">Edit</button>
-                    <button (click)="deleteAuthor(author.id)">Delete</button>
-                    <button (click)="openModalWindow(author.id)">Details</button>
-                </td>
-
-            </tr>
+            <thead>
+                <th >Name</th>
+                <th >Surname</th>
+                <th >Patronymic</th>
+                <th >Date of birth</th>
+                <th >Books</th>
+                <th >Options</th>
+            </thead>
+            
+            <tbody>
+                <tr class="author-data" *ngFor="let author of authors">
+                    <td data-label="Name" class="name"> {{author.name}}</td>
+                    <td data-label="Surname" class="surname"> {{author.surname}}</td>
+                    <td data-label="Patronymic" class="patronymic"> {{author.patronymic}}</td>
+                    <td data-label="Date of birth" class="birthDate"> {{author.birthDate}}</td>
+                    <td data-label="Books" class="books">
+                        <div>
+                            <ul>
+                                <li *ngFor="let book of author.books; let i = index"><span>{{book.bookName}}</span></li>
+                            </ul>
+                        </div>
+    
+                    </td>
+                    <td data-label="Options">
+                        <!-- <button routerLink = "editAuthorData" (click) = "authorIdHandler(author.id)">Edit</button> -->
+                        <button (click)="authorIdHandler(author.id)">Edit</button>
+                        <button (click)="deleteAuthor(author.id)">Delete</button>
+                        <button (click)="openModalWindow(author.id)">Details</button>
+                    </td>
+    
+                </tr>
+            </tbody>
+            
         </table>
 
         <div *ngIf="isBookFound" class="book-not-found">Not found!</div>

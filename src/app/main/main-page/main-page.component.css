@@ -15,8 +15,8 @@ section.intro-wrap {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    outline: 10px solid white;
-    outline-offset: -120px;;
+    /* outline: 10px solid white;
+    outline-offset: -120px;; */
 }
 
 .center {
@@ -39,7 +39,10 @@ h1, .quote {
 }
 
 h1 {
+    margin-bottom: 30px;
     font-size: 160px;
+    border-top: 10px solid white;
+    border-bottom: 10px solid white;
 }
 
 h1, h3 {
@@ -193,6 +196,7 @@ button.modal-close:hover {
 
 .authors-table td, .authors-table th {
     border: 1px solid black;
+    /* background-color: darkgoldenrod; */
 }
 
 .authors-table th, 
@@ -206,10 +210,12 @@ button.modal-close:hover {
     padding: 20px;
     background-color: #0A66C2;
     color: white;
+    
 }
 
 .authors-table td {     
     text-align: center;
+    
 }
 
 .authors-table tr:nth-child(even) {
@@ -317,4 +323,213 @@ button.modal-close:hover {
 
 .loading {
     background-color: rgb(255, 249, 199);
+}
+
+@media screen and (max-width: 1024px) {
+
+    .center {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 874px) {
+
+    h1 {
+        font-size: 130px;
+    }
+
+    h1 ~ span {
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 110px;
+    }
+
+    h1 ~ span {
+        font-size: 25px;
+    }
+
+    .authors-table {
+        border: none;
+        border-collapse: separate;
+    }
+
+    .authors-table thead {
+        display: none;
+    }
+
+    .authors-table, .authors-table tbody, .authors-table tr, .authors-table td {
+        display: block;
+    }
+
+    .authors-table tr.author-data:hover {
+        box-shadow: inset 4px 0 0 0 #0A66C2, inset -4px 0 0 0 #0A66C2;
+    }
+
+    .authors-table tr {
+        margin-bottom: 25px;
+    }
+
+    .authors-table td {
+        text-align: right;
+        padding-left: 50%;
+        padding-right: 15px;
+        position: relative;
+    }
+
+    .authors-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .authors-table td:nth-child(5):before {
+        top: 40%;
+    }
+
+    .authors-table td:nth-child(6):before {
+        top: 25%;
+    }
+
+    .authors-table td:nth-child(5){
+        text-align: center;
+    }
+
+    .authors-table td:nth-child(6) {
+        padding-top: 10px;
+        padding-bottom: 30px;
+        
+    }
+
+    .authors-table td:nth-child(6) button {
+        float: right;
+        margin-right: 35px;
+        margin-top: -3px;
+    }
+}
+
+@media screen and (max-width: 670px) {
+
+    .modal-table {
+        width: 98%;
+    }
+
+    .authors-table td:nth-child(6) button {
+        float: right;
+        margin-right: 20px;
+        margin-top: -3px;
+    }
+
+    .authors-table button {
+        box-shadow: none;
+    }
+
+}
+
+@media screen and (max-width: 600px) { 
+
+    h1 {
+        font-size: 100px;
+    }
+
+    h1 ~ span {
+        font-size: 30px;
+    }
+
+    .sort-search-wrap {
+        display: block;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .sort-search-wrap select {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .sort-search-wrap label {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 555px) {
+
+    h1 {
+        font-size: 80px;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white;
+        text-align: center;
+    }
+
+    h1 ~ span {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .authors-table td:nth-child(6) {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
+    }
+
+    .authors-table td:nth-child(6) button {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .authors-table td:nth-child(6):before {
+        top: 40%;
+    }
+
+    .books-container h3 {
+        font-size: 30px;
+    }
+
+    .a-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .a-buttons a {
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 430px) {
+
+    .modal-window-body {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 90%;
+    }    
+
+    .modal-author-fullname {
+        font-size: 24px;
+    }
+
+    .modal-date-of-birth {
+        font-size: 18px;
+    }
+
+}
+
+@media screen and (max-width: 333px) { 
+
+    .sort-search-wrap input {
+        margin-top: 20px;
+    }
 }

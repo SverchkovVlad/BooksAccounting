@@ -7,11 +7,13 @@ import { MainPageComponent } from './main/main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

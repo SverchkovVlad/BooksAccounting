@@ -9,7 +9,9 @@ const routes: Routes = [
   {path: 'addAuthor/:id-author', loadChildren: () => import('./add-author/routing-modules/add-author-routing.module')
       .then(mod => mod.AddAuthorRoutingModule)},
   {path: 'editGenres', loadChildren: () => import('./genres/routing-modules/edit-genres-routing.module')
-      .then(mod => mod.EditGenresRoutingModule)}
+      .then(mod => mod.EditGenresRoutingModule)},
+  {path: '**', loadChildren: () => import('./pagenotfound/routing-modules/pagenotfound-routing.module')
+      .then(mod => mod.PagenotfoundRoutingModule)}
 ];
 
 @NgModule({

@@ -138,8 +138,6 @@ input[type=submit]:disabled {
 }
 
 input[type=button].delete-button {
-    /*работать с красной кнопкой удаления!!! + алгоритм пуша новых книг в автора и новых авторов в БД*/
-   
     background-color: #f44336;
     width: 80%;
     color: white;

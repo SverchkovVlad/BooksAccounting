@@ -35,8 +35,8 @@ export class SortingService {
       else {
         return firstObject[key] > secondObject[key] ? 1 : firstObject[key] < secondObject[key] ? -1 : 0;
       
-        // if (firstObject[key] < secondObject[key]) return -1;
-        // else if (firstObject[key] > secondObject[key]) return 1;
+        // if (firstObject[key] > secondObject[key]) return 1;
+        // else if (firstObject[key] < secondObject[key]) return -1;
         // else return 0;
       
       }

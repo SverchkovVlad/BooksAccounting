@@ -45,11 +45,6 @@
                             <option *ngFor = "let genre of genres" #genreValue>{{genre.name}}</option>
                         </select>
 
-                        <!-- <div *ngIf = "specificAuthor">
-                            {{specificAuthor!.books[i].bookGenre}}
-                        </div> -->
-                        
-
                         <input *ngIf = "i != 0"
                             (click) = "deleteBook(i)" class = "delete-button" type="button" id="pages" value = "Delete">
 

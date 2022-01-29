@@ -16,7 +16,6 @@ export class ShowMessageService {
     
     {
 
-    
       let element = document.querySelector('.blank') as HTMLElement;
 
       if (element.classList.item(1)) element.classList.remove(element.classList.item(1) as string);

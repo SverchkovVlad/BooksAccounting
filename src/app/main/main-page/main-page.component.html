@@ -51,8 +51,7 @@
         <div class="sort-search-wrap">
 
             <div class="list-sorting">
-                <!-- <select (change) = "selectOptionHandler($event.target)"> -->
-                <!-- <select class = "sort-method-selection"> -->
+        
                 <select (change)="selectOptionHandler($event)">
                     <option hidden>Sort by...</option>
                     <option value="name">Sort by name</option>
@@ -61,6 +60,7 @@
                     <option value="birthDate">Sort by date of birth</option>
                     <option value="books">Sort by amount of books</option>
                 </select>
+
             </div>
 
             <label for="searchField">
@@ -69,9 +69,6 @@
             </label>
 
         </div>
-
-        <!-- Make this using table and FlexBox or Grid for responsive design -->
-        <!-- https://www.w3schools.com/css/css_table.asp -->
 
         <table class="authors-table">
             <thead>
@@ -98,7 +95,6 @@
     
                     </td>
                     <td data-label="Options">
-                        <!-- <button routerLink = "editAuthorData" (click) = "authorIdHandler(author.id)">Edit</button> -->
                         <button (click)="authorIdHandler(author.id)">Edit</button>
                         <button (click)="deleteAuthor(author.id)">Delete</button>
                         <button (click)="openModalWindow(author.id)">Details</button>
@@ -113,8 +109,6 @@
         <div *ngIf="isTableEmpty" class="loading">Authors and books are loading...</div>
 
         <div class="a-buttons">
-            <!-- <a routerLink = "addAuthor">Add new author</a>
-            <a routerLink = "editGenres">Edit genres</a> -->
             <a routerLink="addAuthor">Add new author</a>
             <a routerLink="editGenres">Edit genres</a>
         </div>

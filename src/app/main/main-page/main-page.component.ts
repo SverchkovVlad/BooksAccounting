@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Author } from 'src/app/interfaces/author';
 import { DbOperationsService } from 'src/app/services/db-operations.service';
 import { ItemSearchService } from 'src/app/services/item-search.service';
@@ -12,7 +11,7 @@ import { SortingService } from 'src/app/services/sorting.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit, AfterViewInit {
+export class MainPageComponent implements OnInit {
 
   authors: Author[];
   searchBookName: string;
@@ -132,8 +131,4 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit(): void {
-    //for manipulations with @ViewChild and @ViewChildren after View initializing is completed
-
-  }
 }

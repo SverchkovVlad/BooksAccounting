@@ -41,7 +41,7 @@ export class DbOperationsService {
     .pipe(
       catchError(this.handleError)
     );
-      //catchError(this.handleError));
+  
   }
 
   getAuthor(id: number) : Observable<Author | unknown>{
@@ -59,8 +59,6 @@ export class DbOperationsService {
   private handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);
     return throwError(() => new Error(res || 'Server error'));
-
-    //return observableThrowError(res.error || 'Server error');
   }
 
 

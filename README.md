@@ -29,7 +29,7 @@ The project was originally developed in Visual Studio Code for Mozilla Firefox o
 1. Download project as .zip file and unpack it.
 2. Separately install node_modules to 'BooksAccounting-main' folder.
 3. Download JSON-server from https://github.com/typicode/json-server. We will use it for immitation data loading from server.
-4. Using VS Code (or another code editor) open db.json file in JSON-server and replace it`s content with next code:
+4. Using VS Code (or another code editor) open JSON-server folder. Run `npm install -g json-server` in terminal. Then create `db.json` file and fill it with next code:
 
 ```json
 {
@@ -251,7 +251,7 @@ The project was originally developed in Visual Studio Code for Mozilla Firefox o
 }
 ```
 
-5. Run 'npm start' in JSON-server terminal to launch the server.
+5. Run `json-server --watch db.json` to start the server.
 6. In BooksAccounting project also run 'npm start' to launch the application.
 
 ## Demonstration 

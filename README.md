@@ -251,7 +251,7 @@ The project was originally developed in Visual Studio Code for Mozilla Firefox o
 }
 ```
 
-5. Run `json-server --watch db.json` to start the server.
+5. Run `json-server --watch db.json` (or `npm start` if you see an error) to start the server.
 6. In BooksAccounting project also run 'npm start' to launch the application.
 
 ## Demonstration 
